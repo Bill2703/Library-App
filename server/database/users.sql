@@ -1,0 +1,1 @@
+-- Purpose: Store user registration details.

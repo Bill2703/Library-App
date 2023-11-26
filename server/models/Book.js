@@ -18,6 +18,15 @@ class Book{
         }
     }
 
+    static async getOneByBookName(bookName){
+        const response = await db.query("SELECT * FROM book WHERE LOWER(title) = $1",[bookName])
+        //console.log(response.rows);
+        if(response.rows.length != 1) {
+            throw new Error("Unable to find book!")
+        }
+        return new Book(response.rows[0])
+    }
+
 }
 
 module.exports = Book;

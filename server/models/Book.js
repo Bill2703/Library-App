@@ -1,10 +1,10 @@
 const db = require("../database/connect")
 
 class Book{
-    constructor({book_id, title, authour, blurb, stock}) {
+    constructor({book_id, title, author, blurb, stock}) {
         this.id = book_id
         this.title = title
-        this.authour = authour
+        this.author = author
         this.blurb = blurb
         this.stock = stock
     }
@@ -25,6 +25,14 @@ class Book{
             throw new Error("Unable to find book!")
         }
         return new Book(response.rows[0])
+    }
+
+    static async create(data){
+        const {title, author, blurb, stock} = data;
+        const response = await db.query("INSERT INTO book (title, author, blurb, stock) VALUES ($1, $2, $3, $4) RETURNING title;", [title, author, blurb, stock])
+        const bookName = response.rows[0].title.toLowerCase();
+        const newBook = await Book.getOneByBookName(bookName);
+        return newBook;
     }
 
 }

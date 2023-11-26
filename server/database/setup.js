@@ -3,12 +3,14 @@ const fs = require('fs');
 
 const db = require("./connect");
 
-const sql = fs.readFileSync('./database/books.sql').toString();
+const books = fs.readFileSync('./database/books.sql').toString();
+const users = fs.readFileSync("./database/users.sql").toString();
 
 
 const setUp = async () => {
     try{
-        await db.query(sql);
+        await db.query(books);
+        await db.query(users);
         console.log("DB Setup and Seeded 🌱.");
         db.end();
     } catch (error) {

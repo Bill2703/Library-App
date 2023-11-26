@@ -3,6 +3,7 @@ const cors = require('cors');
 
 const logger = require("./middleware/logger")
 const bookRouter = require("./routers/books");
+const userRouter = require("./routers/user")
 
 
 const api = express();
@@ -12,6 +13,7 @@ api.use(cors());
 api.use(logger);
 
 api.use("/books", bookRouter)
+api.user("/users", userRouter)
 
 api.get("/", (req, res) => {
     res.json({

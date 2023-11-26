@@ -13,7 +13,7 @@ api.use(cors());
 api.use(logger);
 
 api.use("/books", bookRouter)
-api.user("/users", userRouter)
+api.use("/users", userRouter)
 
 api.get("/", (req, res) => {
     res.json({

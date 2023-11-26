@@ -6,28 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./assets/favicon.ico">
     <link rel="stylesheet" href="./assets/default.css">
-    <script src="./assets/register.js" defer></script>
+    <script src="./assets/board.js" defer></script>
     <title>Discretion</title>
 </head>
 <body>
+    <nav>
+        <a id="logout" href="./index.html">Log out</a>
+    </nav>
     <header>
         <h1>Discretion</h1>
         <em>Not everything needs to be public.</em>
     </header>
     <hr />
     <main>
-        <form id="register-form">
+        <div class="container" id="posts">
+
+        </div>
+        <hr />
+        <form id="post-form">
             <fieldset>
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
             </fieldset>
             <fieldset>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password">
+                <label for="title">Content:</label>
+                <textarea id="content" name="content" required></textarea>
             </fieldset>
-            <input type="submit" value="Register">
+            <input type="submit" value="Post">
         </form>
-        <p>Already registered? <a href="./login.html">Log in here</a>.</p>
     </main>
 </body>
 </html>

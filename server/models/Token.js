@@ -1,39 +1,41 @@
-const db = require('../database/connect');
+const { v4: uuidv4 } = require("uuid"); //import v4 as uuidv4
 
-class User {
+const db = require("../database/connect");
 
-    constructor({ user_id, username, password, is_admin }) {
-        this.id = user_id;
-        this.username = username;
-        this.password = password;
-        this.isAdmin = is_admin;
+class Token {
+
+    constructor({ token_id, user_id, token }){
+        this.token_id = token_id;
+        this.user_id = user_id;
+        this.token = token;
+    }
+
+    static async create(user_id) {
+        const token = uuidv4();
+        const response = await db.query("INSERT INTO token (user_id, token) VALUES ($1, $2) RETURNING token_id;",[user_id, token])
+        const newId = response.rows[0].token_id
+        const newToken = await Token.getOneById(newId);
+        return newToken;
     }
 
     static async getOneById(id) {
-        const response = await db.query("SELECT * FROM user_account WHERE user_id = $1", [id]);
+        const response = await db.query("SELECT * FROM token WHERE token_id = $1", [id]);
         if (response.rows.length != 1) {
-            throw new Error("Unable to locate user.");
+            throw new Error("Unable to locate token.");
+        } else {
+            return new Token(response.rows[0]);
         }
-        return new User(response.rows[0]);
     }
 
-    static async getOneByUsername(username) {
-        const response = await db.query("SELECT * FROM user_account WHERE username = $1", [username]);
+    static async getOneByToken(token) {
+        const response = await db.query("SELECT * FROM token WHERE token = $1", [token]);
         if (response.rows.length != 1) {
-            console.log("model error");
-            throw new Error("Unable to locate user.");
+            throw new Error("Unable to locate token.");
+        } else {
+            return new Token(response.rows[0]);
         }
-        return new User(response.rows[0]);
     }
 
-    static async create(data) {
-        const { username, password, isAdmin=false } = data;
-        let response = await db.query("INSERT INTO user_account (username, password) VALUES ($1, $2) RETURNING user_id;",
-            [username, password]);
-        const newId = response.rows[0].user_id;
-        const newUser = await User.getOneById(newId);
-        return newUser;
-    }
 }
 
-module.exports = User;
+module.exports = Token;

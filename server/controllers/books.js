@@ -40,5 +40,17 @@ async function destroy(req,res){
     }
 }
 
+async function update(req,res){
+    try{
+        const name = req.params.name.toLowerCase();
+        const data = req.body;
+        const book = await Book.getOneByBookName(name)
+        let result = await book.update(data);
+        res.status(201).json(result)
+    }catch(err){
+        res.status(404).json({err : err.message})
+    }
+}
 
-module.exports = {index, show, create, destroy}
+
+module.exports = {index, show, create, destroy, update}

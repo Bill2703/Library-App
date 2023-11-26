@@ -54,6 +54,27 @@ class Book{
     }
     
 
+    async update(data) {
+        const { title, author, blurb, stock } = data;
+    
+        if (title !== this.title) {
+            const existingBook = await db.query("SELECT * FROM book WHERE title = $1", [title]);
+            if (existingBook.rows.length > 0) {
+                throw new Error(`A book with the title '${title}' already exists.`);
+            }
+        }
+
+        const response = await db.query(
+            "UPDATE book SET title=$1, author=$2, blurb=$3, stock=$4 WHERE title=$5 RETURNING *",
+            [title, author, blurb, stock, this.title]
+        );
+    
+        const bookName = response.rows[0].title.toLowerCase();
+        const updatedBook = await Book.getOneByBookName(bookName);
+        return updatedBook;
+    }
+    
+
 }
 
 module.exports = Book;

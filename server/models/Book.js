@@ -33,13 +33,11 @@ class Book{
     static async create(data) {
         const { title, author, blurb, stock } = data;
     
-        // Check if a book with the same title already exists
         const existingBook = await db.query("SELECT * FROM book WHERE title = $1", [title]);
         if (existingBook.rows.length > 0) {
             throw new Error(`A book with the title '${title}' already exists.`);
         }
     
-        // If not, proceed with the insertion
         const response = await db.query(
             "INSERT INTO book (title, author, blurb, stock) VALUES ($1, $2, $3, $4) RETURNING title;",
             [title, author, blurb, stock]
@@ -48,6 +46,11 @@ class Book{
         const bookName = response.rows[0].title.toLowerCase();
         const newBook = await Book.getOneByBookName(bookName);
         return newBook;
+    }
+
+    async destroy(){
+        let response = await db.query("DELETE FROM book WHERE title = $1 RETURNING *;",[this.title])
+        return new Book(response.rows[0])
     }
     
 

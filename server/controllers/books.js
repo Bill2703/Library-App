@@ -29,5 +29,16 @@ async function create(req, res){
     }
 }
 
+async function destroy(req,res){
+    try{
+        const title = req.params.name.toLowerCase();
+        const book = await Book.getOneByBookName(title)
+        await book.destroy();
+        res.sendStatus(204);
+    }catch(err){
+        res.status(404).json({error : err.message})
+    }
+}
 
-module.exports = {index, show, create}
+
+module.exports = {index, show, create, destroy}

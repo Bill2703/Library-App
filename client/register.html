@@ -7,19 +7,26 @@
     <link rel="shortcut icon" href="./assets/favicon.ico">
     <link rel="stylesheet" href="./assets/default.css">
     <script src="./assets/register.js" defer></script>
-    <title>Discretion</title>
+    <title>Register</title>
 </head>
 <body>
     <header>
-        <h1>Discretion</h1>
-        <em>Not everything needs to be public.</em>
+        <h1>Welcome to Florin County Council Community Library Booking System</h1>
+        <p>Please enter your details.</p>
     </header>
-    <hr />
-    <main>
+    <div class="container">
         <form id="register-form">
             <fieldset>
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username">
+                <label for="Firstname">firstName:</label>
+                <input type="text" id="Firstname" name="firstName">
+            </fieldset>
+            <fieldset>
+                <label for="Lastname">lastName:</label>
+                <input type="text" id="Lastname" name="lastName">
+            </fieldset>
+            <fieldset>
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email">
             </fieldset>
             <fieldset>
                 <label for="password">Password:</label>
@@ -28,6 +35,10 @@
             <input type="submit" value="Register">
         </form>
         <p>Already registered? <a href="./login.html">Log in here</a>.</p>
-    </main>
+    </div>
+    <div class="footer">
+        &copy; 2023 Florin County Council Community Library Booking System. All
+        rights reserved.
+    </div>
 </body>
 </html>

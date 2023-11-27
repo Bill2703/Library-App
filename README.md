@@ -1,4 +1,4 @@
-# *Florin County Council Community Library Booking System**
+# **Florin County Council Community Library Booking System**
 
 ## **Overview**
 
@@ -34,7 +34,11 @@ The Florin County Council Community Library Booking System is a sophisticated we
 - Install Node.js from [Node.js Official Site](https://nodejs.org/).
 - Install Node.js and all necessary dependencies, including Express, PostgreSQL client (pg), and others.
 
-`npm install nodemon pg dotenv express cors`
+  ```bash
+
+npm install nodemon pg dotenv express cors
+
+  ```
 
 - The command above installs all dependencies listed in your **`package.json`** file.
 
@@ -78,7 +82,7 @@ The Florin County Council Community Library Booking System is a sophisticated we
 
   ```bash
   npm run setup-db
-  
+
   ```
 
 ## **Known Bugs and Issues**

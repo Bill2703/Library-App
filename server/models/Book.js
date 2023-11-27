@@ -13,7 +13,7 @@ class Book{
 
     static async getAll(){
         const response = await db.query("SELECT * FROM book");
-        console.log(response.rows);
+        // console.log(response.rows);
         if(response.rows.length === 0){
             throw new Error("No books available!")
         } else {

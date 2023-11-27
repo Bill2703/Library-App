@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             // Create elements for additional book information
             const titleElement = document.createElement('h3');
-            titleElement.textContent = 'Book Title: ' + book.title;
+            titleElement.textContent = book.title;
 
             const authorElement = document.createElement('p');
             authorElement.textContent = 'Author: ' + book.author;
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             summaryElement.textContent = 'Summary: ' + book.blurb;
 
             const bookNowLink = document.createElement('a');
-            bookNowLink.href = 'booking.html';
+            bookNowLink.href = 'bookingSystem.html';
             bookNowLink.className = 'card-button';
             bookNowLink.setAttribute('data-room', 'book');
             bookNowLink.textContent = 'Book Now';

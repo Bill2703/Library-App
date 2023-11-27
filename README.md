@@ -31,14 +31,13 @@ The Florin County Council Community Library Booking System is a sophisticated we
 
 ### 2. Installing Dependencies
 
-- Install Node.js from [Node.js Official Site](https://nodejs.org/).
-- Install Node.js and all necessary dependencies, including Express, PostgreSQL client (pg), and others.
+- Install all necessary dependencies including Express, PostgreSQL client (pg), and others:
 
-  ```bash
+    ```bash
+    bashCopy code
+    npm install nodemon pg dotenv express cors
 
-npm install nodemon pg dotenv express cors
-
-  ```
+    ```
 
 - The command above installs all dependencies listed in your **`package.json`** file.
 
@@ -91,4 +90,4 @@ npm install nodemon pg dotenv express cors
 
 ---
 
-_This document is subject to updates and improvements. Last updated on 24/11/23._
+_This document is subject to updates and improvements. Last updated on 27/11/23._

@@ -1,12 +1,13 @@
 const { Router } = require("express")
+const authenticator = require("../middleware/authenticator")
 
 const bookController = require("../controllers/books")
 const bookRouter = Router();
 
-bookRouter.get("/", bookController.index)
-bookRouter.get("/:id", bookController.show)
+bookRouter.get("/", authenticator, bookController.index)
+bookRouter.get("/:name", bookController.show)
 bookRouter.post("/", bookController.create)
-bookRouter.delete("/:", bookController.destroy)
+bookRouter.delete("/:name", bookController.destroy)
 bookRouter.patch("/:name", bookController.update)
 
 module.exports = bookRouter;

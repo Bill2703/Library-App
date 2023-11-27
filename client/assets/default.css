@@ -1,22 +1,31 @@
-body{
-    margin: 40px auto;
-    max-width: 650px;
-    line-height: 1.6;
-    font-size: 18px;
-    color: #444444;
-    padding: 0 10px
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-h1,h2,h3 {
-    line-height: 1.2
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: #2c2d2d;
+  color: rgba(255, 255, 255, 0.747);
+  overflow: hidden;
 }
 
-fieldset {
-    border: none;
+#dashboard {
+  background-color: #1a19196d;
+  padding: 20px;
+  display: flexbox;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    padding: 0.2rem;
-}
+.footer {
+    margin-top: auto !important; /* Moves footer to bottom */
+    padding: 10px; /* Increased padding */
+    text-align: center;
+    font-size: 14px;
+    color: #b6b4b4;
+  }

@@ -42,7 +42,7 @@ class Book{
         }
     
         const response = await db.query(
-            "INSERT INTO book (title, author, blurb, stock, coverimageurl) VALUES ($1, $2, $3, $4, $5s) RETURNING title;",
+            "INSERT INTO book (title, author, blurb, stock, coverimageurl) VALUES ($1, $2, $3, $4, $5) RETURNING title;",
             [title, author, blurb, stock, coverimageurl]
         );
     

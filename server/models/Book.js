@@ -59,14 +59,18 @@ class Book{
 
     async update(data) {
         const { title, author, blurb, stock, coverimageurl } = data;
-    
+        //console.log("hit4");  
         if (title !== this.title) {
+            console.log("hit3");
             const existingBook = await db.query("SELECT * FROM book WHERE title = $1", [title]);
+            console.log("hit2");
             if (existingBook.rows.length > 0) {
+                console.log("hit");
                 throw new Error(`A book with the title '${title}' already exists.`);
             }
         }
 
+        console.log("hit5");
         const response = await db.query(
             "UPDATE book SET title=$1, author=$2, blurb=$3, stock=$4, coverimageurl=$5 WHERE title=$6 RETURNING *",
             [title, author, blurb, stock, coverimageurl, this.title]
@@ -76,6 +80,23 @@ class Book{
         const updatedBook = await Book.getOneByBookName(bookName);
         return updatedBook;
     }
+
+    async updateStock({ title, stock }) {
+        try {
+            const response = await db.query(
+                "UPDATE book SET stock=$1 WHERE title=$2 RETURNING *",
+                [stock, title]
+            );
+    
+            const bookName = response.rows[0].title.toLowerCase();
+            const updatedBook = await Book.getOneByBookName(bookName);
+            return updatedBook;
+        } catch (error) {
+            console.error('Error updating stock:', error);
+            throw new Error('Failed to update stock');
+        }
+    }
+    
     
 
 }

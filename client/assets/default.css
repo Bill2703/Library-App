@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&display=swap");
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;700;900&display=swap');
+
 
 * {
   box-sizing: border-box;
@@ -7,7 +8,8 @@
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
   background-image: url(../assets/landing.jpg);
   background-size: cover;
   color: rgba(255, 255, 255, 0.747);
@@ -21,7 +23,7 @@ body {
 }
 
 #dashboard {
-  background-color: #1a19196d;
+  background-color: #0000006d;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -30,6 +32,10 @@ body {
   border-radius: 5px;
   width: 300px;
   height: 85%;
+}
+h1{
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
 }
 
 .footer {

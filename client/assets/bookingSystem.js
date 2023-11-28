@@ -1,68 +1,104 @@
-// Retrieve and display the selected book's details
+// Global variables for form inputs and selected book details
 const selectedBook = JSON.parse(localStorage.getItem('selectedBook'));
-const nameSpace = document.getElementById("additionalInfo");
-nameSpace.textContent = selectedBook.title;
-
-// Get input fields for booking date and time
 const bookingDateInput = document.getElementById('date');
 const bookingTimeInput = document.getElementById('time');
+const bookNowLink = document.getElementById("bookNow");
+const logout = document.getElementById("logout");
+const back = document.getElementById("back");
 
-// Function to update the stock of the selected book
+// Display the selected book's title in the designated area
+function displaySelectedBook() {
+    const nameSpace = document.getElementById("additionalInfo");
+    nameSpace.textContent = selectedBook.title;
+}
+
+// Update the stock of the selected book on the server
 async function updateStock(book) {
-    try {
-        const { title, stock } = book;
+    const { title, stock } = book;
+    const response = await fetch(`http://localhost:3000/books/stock/${title}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem('token'),
+        },
+        body: JSON.stringify({ stock: stock - 1, title: title }),
+    });
 
-        // Sending a PATCH request to update the stock of the book
-        const response = await fetch(`http://localhost:3000/books/stock/${title}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': localStorage.getItem('token'), // Authorization header for secured endpoints
-            },
-            body: JSON.stringify({
-                stock: stock - 1, // Decrease stock by 1
-                title: title,
-            }),
-        });
-
-        if (!response.ok) {
-            throw new Error('Failed to update stock');
-        }
-
-        // On successful stock update, redirect to the booking page
-        window.location.assign("./bookpage.html");
-    } catch (error) {
-        // Log and show error message to the user
-        console.error('Error updating stock:', error);
+    if (!response.ok) {
+        throw new Error('Failed to update stock');
     }
 }
 
-// Event listener for the 'Book Now' button
-const bookNowLink = document.getElementById("bookNow");
-bookNowLink.addEventListener('click', function (event) {
-    event.preventDefault();
+// Simulate sending a booking confirmation
+// Simulate sending a booking confirmation
+function sendBookingConfirmation(book, date, time) {
+    // Create a popup element
+    const popup = document.createElement('div');
+    popup.style.position = 'fixed';
+    popup.style.left = '50%';
+    popup.style.top = '50%';
+    popup.style.transform = 'translate(-50%, -50%)';
+    popup.style.padding = '20px';
+    popup.style.backgroundColor = 'white';
+    popup.style.border = '1px solid black';
+    popup.style.zIndex = 1000;
+    popup.style.textAlign = 'center';
+    popup.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
 
-    // Validate date and time inputs before proceeding
+    // Set the text for the popup
+    popup.innerHTML = `<strong>Booking Confirmation</strong><br>${book.title}<br>Date: ${date}<br>Time: ${time}`;
+
+    // Append the popup to the body
+    document.body.appendChild(popup);
+
+    // Remove the popup after 7 seconds
+    setTimeout(() => {
+        popup.remove();
+    }, 7000);
+}
+
+// Add event listeners
+function setupEventListeners() {
+    bookNowLink.addEventListener('click', handleBookNowClick);
+    logout.addEventListener("click", handleLogout);
+    back.addEventListener("click", handleBack);
+}
+
+// Handle 'Book Now' button click
+async function handleBookNowClick(event) {
+    event.preventDefault();
     const bookingDate = bookingDateInput.value;
     const bookingTime = bookingTimeInput.value;
+
     if (!bookingDate || !bookingTime) {
         alert("Please enter both date and time for the booking.");
         return;
     }
 
-    // Proceed to update the book's stock
-    updateStock(selectedBook);
-});
+    try {
+        await updateStock(selectedBook);
+        sendBookingConfirmation(selectedBook, bookingDate, bookingTime);
+    } catch (error) {
+        console.error('Error during booking:', error);
+    }
+}
 
-// Event listener for the 'Logout' button
-const logout = document.getElementById("logout");
-logout.addEventListener("click", () => {
+// Handle 'Logout' button click
+function handleLogout() {
     localStorage.removeItem("token");
     localStorage.removeItem("selectedBook");
-});
+}
 
-// Event listener for the 'Back' button
-const back = document.getElementById("back");
-back.addEventListener("click", () => {
+// Handle 'Back' button click
+function handleBack() {
     localStorage.removeItem("selectedBook");
-});
+}
+
+// Initialize the script
+function init() {
+    displaySelectedBook();
+    setupEventListeners();
+}
+
+// Start the script once the DOM is fully loaded
+document.addEventListener("DOMContentLoaded", init);

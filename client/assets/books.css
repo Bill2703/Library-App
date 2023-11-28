@@ -1,7 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;700;900&display=swap");
-* {
-    box-sizing: border-box;
-}
 
 /* General Styles */
 body {
@@ -9,11 +6,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
-    .container, .button {
-    box-sizing: border-box;
     
-}
-
 }
 
 /* Dashboard Styles */
@@ -82,9 +75,7 @@ body {
 .book-item {
     background-color: white;
     border-radius: 10px;
-    padding: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
 }
 
 .book-item:hover {
@@ -120,7 +111,6 @@ body {
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.2s ease-in-out;
-    max-width: 100%;
 }
 
 .card-button:hover {

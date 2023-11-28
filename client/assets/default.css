@@ -14,18 +14,6 @@ body {
   color: rgb(87, 91, 120);
 }
 
-.brand-logo {
-  height: 100px;
-  width: 100px;
-  background: url("./assets/logo.png");
-  margin: auto;
-  border-radius: 50%;
-  box-sizing: border-box;
-  box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
-  color: rgb(120, 87, 87);;
-}
-
-
 .container {
   display: flex;
   justify-content: center;
@@ -44,6 +32,17 @@ body {
   height: auto;
   background: #ecf0f3;
   box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+}
+
+.brand-logo {
+  background: url(../assets/logo.png);
+  background-size: contain;
+  height: 100px;
+  width: 100px;
+  margin: auto;
+  border-radius: 50%;
+  box-sizing: border-box;
+  box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px;
 }
 
 h1 {

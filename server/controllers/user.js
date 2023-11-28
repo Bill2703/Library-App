@@ -29,7 +29,12 @@ async function login (req, res) {
         } else {
             const token = await Token.create(user["id"])
             console.log("token authenticated");
-            res.status(200).json({authenticated: true, token: token.token});
+            const userInfo = {
+                id: user.id,
+                username: user.username,
+                // Add other user properties you want to include
+            };
+            res.status(200).json({authenticated: true, token: token.token, user: userInfo});
         }
     } catch(err){
         res.status(401).json({error: err.message})

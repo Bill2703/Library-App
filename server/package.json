@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "setup-db": "node ./database/setup.js",
     "dev": "nodemon index.js",
-    "start": "node index.js"
+    "start": "node index.js",
+    "integrationTests": "jest --testPathPattern=integration/ --watchAll --detectOpenHandles --runInBand --verbose",
+    "unitTests": "jest --testPathPattern=/unit/ --watchAll --verbose"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +22,8 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3",
     "nodemon": "^3.0.1"
   }
 }

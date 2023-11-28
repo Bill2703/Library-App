@@ -23,7 +23,6 @@ class Book{
 
     static async getOneByBookName(bookName){
         const response = await db.query("SELECT * FROM book WHERE LOWER(title) = $1",[bookName])
-        //console.log(response.rows);
         if (response.rows.length > 1 ){
             throw new Error("More than one book of same name!")
         }

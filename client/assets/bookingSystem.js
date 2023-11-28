@@ -30,10 +30,31 @@ async function updateStock(book) {
 }
 
 // Simulate sending a booking confirmation
+// Simulate sending a booking confirmation
 function sendBookingConfirmation(book, date, time) {
-    console.log(`Booking confirmation for '${book.title}':`);
-    console.log(`Date: ${date}`);
-    console.log(`Time: ${time}`);
+    // Create a popup element
+    const popup = document.createElement('div');
+    popup.style.position = 'fixed';
+    popup.style.left = '50%';
+    popup.style.top = '50%';
+    popup.style.transform = 'translate(-50%, -50%)';
+    popup.style.padding = '20px';
+    popup.style.backgroundColor = 'white';
+    popup.style.border = '1px solid black';
+    popup.style.zIndex = 1000;
+    popup.style.textAlign = 'center';
+    popup.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+
+    // Set the text for the popup
+    popup.innerHTML = `<strong>Booking Confirmation</strong><br>${book.title}<br>Date: ${date}<br>Time: ${time}`;
+
+    // Append the popup to the body
+    document.body.appendChild(popup);
+
+    // Remove the popup after 7 seconds
+    setTimeout(() => {
+        popup.remove();
+    }, 7000);
 }
 
 // Add event listeners

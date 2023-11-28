@@ -1,3 +1,6 @@
+DROP TABLE IF EXISTS book_rental;
+DROP TABLE IF EXISTS token;
+DROP TABLE IF EXISTS user_account;
 DROP TABLE IF EXISTS book;
 
 CREATE TABLE book (

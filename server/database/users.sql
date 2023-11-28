@@ -1,6 +1,4 @@
 -- Purpose: Store user registration details.
-DROP TABLE IF EXISTS token;
-DROP TABLE IF EXISTS user_account;
 
 CREATE TABLE user_account (
     user_id INT GENERATED ALWAYS AS IDENTITY,

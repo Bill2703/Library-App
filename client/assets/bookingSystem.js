@@ -55,7 +55,6 @@ function sendBookingConfirmation(book, date, time) {
     setTimeout(() => {
         popup.remove();
         window.location.assign("./bookpage.html")
-        localStorage.removeItem("token");
         localStorage.removeItem("selectedBook");
     }, 3000);
 

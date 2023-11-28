@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS user_account CASCADE;
 CREATE TABLE user_account (
     user_id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     fullName VARCHAR(30) NOT NULL,
-    email VARCHAR(30) UNIQUE NOT NULL,
+    email VARCHAR(30) NOT NULL,
     username VARCHAR(30) UNIQUE NOT NULL,
     password CHAR(60) NOT NULL,
     isAdmin BOOLEAN DEFAULT false

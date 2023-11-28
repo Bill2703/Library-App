@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&display=swap");
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -8,18 +7,30 @@
 
 body {
   font-family: "Open Sans", sans-serif;
-  background-color: #589898;
+  background-image: url(../assets/landing.jpg);
+  background-size: cover;
   color: rgba(255, 255, 255, 0.747);
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* This makes the container take the full viewport height */
 }
 
 #dashboard {
   background-color: #1a19196d;
   padding: 20px;
-  display: flexbox;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 5px;
+  width: 300px;
+  height: 85%;
 }
+
 
 .footer {
     margin-top: auto !important; /* Moves footer to bottom */
@@ -30,7 +41,7 @@ body {
   }
 
 /* Dashboard Styles */
-#dashboard {
+/* #dashboard {
   background-color: #333;
   color: white;
   padding: 10px 20px;
@@ -59,7 +70,7 @@ body {
   background-color: #0056b3;
 }
 
-.button-2 {
+/* .button-2 {
   background-color: #ece2e2;
   border-radius: 8px;
   border-width: 0;
@@ -80,4 +91,4 @@ body {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-}
+} */ 

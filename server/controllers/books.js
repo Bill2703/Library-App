@@ -45,8 +45,25 @@ async function update(req,res){
     try{
         const name = req.params.name.toLowerCase();
         const data = req.body;
+        console.log("NAME: " + name); 
+        console.log(data);
         const book = await Book.getOneByBookName(name)
+        //console.log(book);
         let result = await book.update(data);
+        //console.log(result);
+        res.status(201).json(result)
+    }catch(err){
+        res.status(404).json({err : err.message})
+    }
+}
+
+async function updateStock(req,res){
+    try{
+        const name = req.params.name.toLowerCase();
+        const data = req.body;
+
+        const book = await Book.getOneByBookName(name)
+        let result = await book.updateStock(data);
         res.status(201).json(result)
     }catch(err){
         res.status(404).json({err : err.message})
@@ -54,4 +71,4 @@ async function update(req,res){
 }
 
 
-module.exports = {index, show, create, destroy, update}
+module.exports = {index, show, create, destroy, update, updateStock}

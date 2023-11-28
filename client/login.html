@@ -1,37 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./assets/favicon.ico">
-    <link rel="stylesheet" href="./assets/index.css">
-    <link rel="stylesheet" href="./assets/default.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./assets/favicon.ico" />
+    <link rel="stylesheet" href="./assets/index.css" />
+    <link rel="stylesheet" href="./assets/default.css" />
     <script src="./assets/login.js" defer></script>
     <title>Florin County Council Community Library Booking System</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <div id="dashboard">
-            <p1>Welcome to Florin County Council Community Library Booking System</p1>
-            <p>Please enter your Email/Username and password.</p>
-            <form id="login-form">
-                <fieldset>
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username">
-                </fieldset>
-                <fieldset>
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password">
-                    <button type="button" id="togglePassword">Show Password</button>
-                </fieldset>
-                <input type="submit" value="Log in">
-            </form>
-            <p>New to Florin County Council Library? <a href="./register.html">Sign up here</a>.</p>
-        </div>
+      <div id="dashboard">
+        <p1
+          >Welcome to Florin County Council Community Library Booking System</p1
+        >
+        <p>Please enter your Email/Username and password.</p>
+        <form id="login-form">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" placeholder="username"/>
+
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password"  placeholder="password"/>
+
+        <!-- <input type="submit" value="Log in" class="login-button" /> -->
+
+        <button type="submit">LOGIN</button>
+
+        </form>
+        <p>
+          New to Florin County Council Library?
+          <a href="./register.html">Sign up here</a>.
+        </p>
+      </div>
     </div>
     <div class="footer">
-        &copy; 2023 Florin County Council Community Library Booking System. All
-        rights reserved.
+      &copy; 2023 Florin County Council Community Library Booking System. All
+      rights reserved.
     </div>
-</body>
+  </body>
 </html>

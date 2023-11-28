@@ -27,13 +27,18 @@ class User {
     }
 
     static async create(data) {
-        const { username, password, isAdmin=false } = data;
-        let response = await db.query("INSERT INTO user_account (username, password) VALUES ($1, $2) RETURNING user_id;",
-            [username, password]);
+        const { username, password, email, fullName, isAdmin = false } = data;
+    
+        let response = await db.query(
+            "INSERT INTO user_account (username, password, email, fullName) VALUES ($1, $2, $3, $4) RETURNING user_id;",
+            [username, password, email, fullName]
+        );
+    
         const newId = response.rows[0].user_id;
         const newUser = await User.getOneById(newId);
         return newUser;
     }
+    
 }
 
 module.exports = User;

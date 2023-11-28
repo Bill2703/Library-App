@@ -22,6 +22,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
         localStorage.setItem("token", data.token)
         window.location.assign("menu.html")
     } else {
+        // todo: add error message
         alert(data.error);
     }
 })

@@ -8,7 +8,7 @@ CREATE TABLE user_account (
     email VARCHAR(30) UNIQUE NOT NULL,
     username VARCHAR(30) UNIQUE NOT NULL,
     password CHAR(60) NOT NULL,
-    isAdmin BOOLEAN DEFAULT false,
+    isAdmin BOOLEAN DEFAULT false
 );
 
 CREATE TABLE token(

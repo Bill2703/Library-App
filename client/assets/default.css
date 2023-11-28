@@ -12,8 +12,18 @@ body {
   background-image: url(../assets/landing.jpg);
   background-size: cover;
   color: rgb(87, 91, 120);
-
 }
+
+.brand-logo {
+  height: 100px;
+  width: 100px;
+  background: url("./assets/logo.png");
+  margin: auto;
+  border-radius: 50%;
+  box-sizing: border-box;
+  box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
+}
+
 
 .container {
   display: flex;

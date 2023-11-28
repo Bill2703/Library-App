@@ -107,7 +107,7 @@ function validateEmail(email) {
 function validatePassword(password, fullName) {
     const hasUpperCase = /[A-Z]/.test(password);
     const hasNumber = /\d/.test(password);
-    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>-=+~]/.test(password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>+=~\\-]/.test(password);
     const isLongEnough = password.length > 8;
     const doesNotIncludeName = !password.toLowerCase().includes(fullName.toLowerCase());
 

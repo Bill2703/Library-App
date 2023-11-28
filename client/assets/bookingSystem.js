@@ -15,13 +15,15 @@ function displaySelectedBook() {
 // Update the stock of the selected book on the server
 async function updateStock(book) {
     const { title, stock } = book;
+    const user_id = localStorage.getItem("user_id")
+    const username = localStorage.getItem("username")
     const response = await fetch(`http://localhost:3000/books/stock/${title}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': localStorage.getItem('token'),
         },
-        body: JSON.stringify({ stock: stock - 1, title: title }),
+        body: JSON.stringify({ stock: stock - 1, title: title, user_id: user_id, username: username }),
     });
 
     if (!response.ok) {
@@ -54,7 +56,7 @@ function sendBookingConfirmation(book, date, time) {
     // Remove the popup after 7 seconds
     setTimeout(() => {
         popup.remove();
-        window.location.assign("./bookpage.html")
+        //window.location.assign("./bookpage.html")
         localStorage.removeItem("selectedBook");
     }, 3000);
 
@@ -72,6 +74,7 @@ async function handleBookNowClick(event) {
     event.preventDefault();
     const bookingDate = bookingDateInput.value;
     const bookingTime = bookingTimeInput.value;
+
 
     if (!bookingDate || !bookingTime) {
         alert("Please enter both date and time for the booking.");

@@ -46,7 +46,7 @@ describe('Book', () => {
       
         it('throws an error when more than one book of the same name exists', async () => {
           jest.spyOn(db, 'query')
-            .mockResolvedValueOnce({ rows: [{}, {}] }); // Mocking two books with the same name
+            .mockResolvedValueOnce({ rows: [{}, {}] }); 
       
           await expect(Book.getOneByBookName('duplicateBook')).rejects.toThrow('More than one book of same name!');
         });
@@ -58,10 +58,52 @@ describe('Book', () => {
           await expect(Book.getOneByBookName('nonExistentBook')).rejects.toThrow('Unable to find book!');
         });
       });
-    
-      describe('get')
+
+      describe('create', () => {
+        it('successfully creates a new book', async () => {
+          const newBookData = { title: 'newBook', author: 'newAuthor', blurb: 'newBlurb', stock: 5, coverimageurl: 'newUrl' };
+          const newBookRow = {
+            book_id: 1, 
+            title: 'newBook', 
+            author: 'newAuthor', 
+            blurb: 'newBlurb', 
+            stock: 5, 
+            coverimageurl: 'newUrl'
+          };
+      
+          jest.spyOn(db, 'query')
+            .mockResolvedValueOnce({ rows: [] }) 
+            .mockResolvedValueOnce({ rows: [{ title: 'newBook' }] }) 
+            .mockResolvedValueOnce({ rows: [newBookRow] }); 
+      
+          const book = await Book.create(newBookData);
+          expect(book).toEqual(expect.any(Book));
+          expect(book.title).toBe('newBook');
+        });
+        it('throws an error when a book with the same title already exists', async () => {
+            jest.spyOn(db, 'query')
+              .mockResolvedValueOnce({ rows: [{ title: 'existingBook' }] }); 
+        
+            const newBookData = { title: 'existingBook', author: 'newAuthor', blurb: 'newBlurb', stock: 5, coverimageurl: 'newUrl' };
+            await expect(Book.create(newBookData)).rejects.toThrow("A book with the title 'existingBook' already exists.");
+          });
+      });
+    });
+
+      describe('destroy', () => {
+        it('successfully deletes a book', async () => {
+          const book = new Book({ book_id: 1, title: 'bookDelete', author: 'author', blurb: 'blurb', stock: 5, coverimageurl: 'url' });
+          jest.spyOn(db, 'query')
+            .mockResolvedValueOnce({ rows: [{ title: 'bookDelete' }] });
+      
+          const deletedBook = await book.destroy();
+          expect(deletedBook.title).toBe('bookDelete');
+        });
+      });
+      
+      
     
   })
 
 
-})
+

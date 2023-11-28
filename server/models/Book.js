@@ -13,7 +13,6 @@ class Book{
 
     static async getAll(){
         const response = await db.query("SELECT * FROM book");
-        // console.log(response.rows);
         if(response.rows.length === 0){
             throw new Error("No books available!")
         } else {
@@ -23,7 +22,6 @@ class Book{
 
     static async getOneByBookName(bookName){
         const response = await db.query("SELECT * FROM book WHERE LOWER(title) = $1",[bookName])
-        //console.log(response.rows);
         if (response.rows.length > 1 ){
             throw new Error("More than one book of same name!")
         }

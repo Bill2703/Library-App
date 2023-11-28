@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link rel="shortcut icon" href="./assets/favicon.ico" />
     <link rel="stylesheet" href="./assets/index.css" />
     <link rel="stylesheet" href="./assets/default.css" />
@@ -12,26 +14,21 @@
   <body>
     <div class="container">
       <div id="dashboard">
-        <p1
-          >Welcome to Florin County Council Community Library Booking System</p1
-        >
+        <p1>Welcome to Florin County Council Community Library Booking System</p1>
         <p>Please enter your Email/Username and password.</p>
         <form id="login-form">
           <label for="username">Username:</label>
           <input type="text" id="username" name="username" placeholder="username"/>
 
           <label for="password">Password:</label>
-          <input type="password" id="password" name="password"  placeholder="password"/>
+          <div class="password-container">
+            <input type="password" id="password" name="password" placeholder="password"/>
+            <i class="toggle-password-icon" id="togglePassword"></i> <!-- Add the eye icon here -->
+          </div>
 
-        <!-- <input type="submit" value="Log in" class="login-button" /> -->
-
-        <button type="submit">LOGIN</button>
-
+          <button type="submit">LOGIN</button>
         </form>
-        <p>
-          New to Florin County Council Library?
-          <a href="./register.html">Sign up here</a>.
-        </p>
+        <p>New to Florin County Council Library? <a href="./register.html">Sign up here</a>.</p>
       </div>
     </div>
     <div class="footer">

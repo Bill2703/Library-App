@@ -54,3 +54,14 @@ bookNowLink.addEventListener('click', function (event) {
     updateStock(selectedBook);
 });
 
+
+const logout = document.getElementById("logout");
+logout.addEventListener("click", () => {
+    localStorage.removeItem("token")
+    localStorage.removeItem("selectedBook")
+});
+
+const back = document.getElementById("back");
+back.addEventListener("click", () => {
+    localStorage.removeItem("selectedBook")
+})

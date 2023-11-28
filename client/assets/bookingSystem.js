@@ -5,6 +5,7 @@ const bookingTimeInput = document.getElementById('time');
 const bookNowLink = document.getElementById("bookNow");
 const logout = document.getElementById("logout");
 const back = document.getElementById("back");
+let alreadyRented =  false;
 
 // Display the selected book's title in the designated area
 function displaySelectedBook() {
@@ -17,21 +18,25 @@ async function updateStock(book) {
     const { title, stock } = book;
     const user_id = localStorage.getItem("user_id")
     const username = localStorage.getItem("username")
-    const response = await fetch(`http://localhost:3000/books/stock/${title}`, {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('token'),
-        },
-        body: JSON.stringify({ stock: stock - 1, title: title, user_id: user_id, username: username }),
-    });
+    const book_id = book.id;
+    try {
+        const response = await fetch(`http://localhost:3000/books/stock/${title}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('token'),
+            },
+            body: JSON.stringify({ stock: stock - 1, title: title, user_id: user_id, username: username, book_id: book_id }),
+        });
 
-    if (!response.ok) {
-        window.location.assign("./login.html");
+        if (!response.ok) {
+            alert("You have already rented this book.");
+            alreadyRented = true;
+        }
+    } catch (error) {
+        console.error('Error during updateStock:', error);
     }
 }
-
-// Simulate sending a booking confirmation
 // Simulate sending a booking confirmation
 function sendBookingConfirmation(book, date, time) {
     // Create a popup element
@@ -56,7 +61,7 @@ function sendBookingConfirmation(book, date, time) {
     // Remove the popup after 7 seconds
     setTimeout(() => {
         popup.remove();
-        //window.location.assign("./bookpage.html")
+        window.location.assign("./bookpage.html")
         localStorage.removeItem("selectedBook");
     }, 3000);
 
@@ -83,7 +88,13 @@ async function handleBookNowClick(event) {
 
     try {
         await updateStock(selectedBook);
-        sendBookingConfirmation(selectedBook, bookingDate, bookingTime);
+        if(alreadyRented === false){
+            sendBookingConfirmation(selectedBook, bookingDate, bookingTime);
+        } else {
+            window.location.assign("./bookpage.html")
+            localStorage.removeItem("selectedBook");
+        }
+
     } catch (error) {
         console.error('Error during booking:', error);
     }
@@ -93,6 +104,9 @@ async function handleBookNowClick(event) {
 function handleLogout() {
     localStorage.removeItem("token");
     localStorage.removeItem("selectedBook");
+    localStorage.removeItem("username")
+    localStorage.removeItem("user_id")
+    window.location.assign("./login.html")
 }
 
 // Handle 'Back' button click

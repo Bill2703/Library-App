@@ -92,13 +92,23 @@ class Book{
         }
     }
 
-    async hasUserRentedBook(userId, bookName){
-        try{
-            const response = await db.query("SELECT * FROM book_rental WHERE user_id=$1 AND book_title = $2", [userId, bookName]);
-            return response.rows.length > 0
-        }catch(err){
-            console.error('Already renting book:', error);
-            throw new Error('Already renting this book!');
+    static async hasUserRentedBook(user_id, book_id) {
+        const response = await db.query("SELECT * FROM book_rental WHERE user_id=$1 AND book_id = $2", [user_id, book_id]);
+        return response.rows.length > 0;
+    }
+
+    static async insertRental(user_id, book_id) {
+        try {
+            const response = await db.query(
+                "INSERT INTO book_rental (user_id, book_id, rental_date) VALUES ($1, $2, CURRENT_TIMESTAMP) RETURNING *",
+                [user_id, book_id]
+            );
+
+            // Return the inserted rental data
+            return response.rows[0];
+        } catch (err) {
+            console.error('Error inserting rental:', err.message);
+            throw new Error('Failed to insert rental');
         }
     }
 

@@ -61,10 +61,38 @@ async function updateStock(req,res){
         console.log(name);
         console.log(data);
 
+        const user_id = data.user_id;
+        const book_id = data.book_id;
+        const username = data.username;
+
         const book = await Book.getOneByBookName(name)
 
+        console.log("hit1");
+
+        // console.log(user_id);
+        // console.log(book_id);
+        // console.log(book);
+        // console.log(book.id);
+
+        const hasRented = await Book.hasUserRentedBook(user_id, book_id);
+
+        console.log("hit2");
+
+        if (hasRented) {
+            // Handle the case where the user has already rented the book
+            return res.status(400).json({ error: "User has already rented this book." });
+        }
+
+        console.log("hit3");
 
         let result = await book.updateStock(data);
+
+        console.log("hit4");
+
+        await Book.insertRental(user_id, book_id)
+
+        console.log("hit5");
+
         res.status(201).json(result)
     }catch(err){
         res.status(404).json({err : err.message})

@@ -4,6 +4,8 @@ DROP TABLE IF EXISTS user_account;
 
 CREATE TABLE user_account (
     user_id INT GENERATED ALWAYS AS IDENTITY,
+    fullName VARCHAR(30) UNIQUE NOT NULL,
+    email VARCHAR(30) UNIQUE NOT NULL,
     username VARCHAR(30) UNIQUE NOT NULL,
     password CHAR(60) NOT NULL,
     isAdmin BOOLEAN DEFAULT false,

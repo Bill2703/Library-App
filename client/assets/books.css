@@ -1,6 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;700;900&display=swap");
+
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Poppins", sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
@@ -43,7 +45,7 @@ body {
     color: #333333;
     cursor: pointer;
     display: inline-block;
-    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:"Poppins", sans-serif;
     font-size: 14px;
     font-weight: 500;
     line-height: 20px;
@@ -101,7 +103,7 @@ body {
 }
 
 .card-button {
-    display: inline-block;
+    display: block;
     background-color: #28a745;
     color: white;
     padding: 10px 15px;

@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS user_account CASCADE;
 
 CREATE TABLE user_account (
     user_id INT GENERATED ALWAYS AS IDENTITY,
-    fullName VARCHAR(30) UNIQUE NOT NULL,
+    fullName VARCHAR(30) NOT NULL,
     email VARCHAR(30) UNIQUE NOT NULL,
     username VARCHAR(30) UNIQUE NOT NULL,
     password CHAR(60) NOT NULL,

@@ -12,7 +12,7 @@ class Book{
     
 
     static async getAll(){
-        const response = await db.query("SELECT * FROM book");
+        const response = await db.query("SELECT * FROM book ORDER BY book_id ASC");
         // console.log(response.rows);
         if(response.rows.length === 0){
             throw new Error("No books available!")
@@ -96,8 +96,16 @@ class Book{
             throw new Error('Failed to update stock');
         }
     }
-    
-    
+
+    async hasUserRentedBook(userId, bookName){
+        try{
+            const response = await db.query("SELECT * FROM book_rental WHERE user_id=$1 AND book_title = $2", [userId, bookName]);
+            return response.rows.length > 0
+        }catch(err){
+            console.error('Already renting book:', error);
+            throw new Error('Already renting this book!');
+        }
+    }
 
 }
 

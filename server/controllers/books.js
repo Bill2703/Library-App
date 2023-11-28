@@ -61,14 +61,22 @@ async function updateStock(req,res){
     try{
         const name = req.params.name.toLowerCase();
         const data = req.body;
+        console.log(name);
+        console.log(data);
 
         const book = await Book.getOneByBookName(name)
+
+
         let result = await book.updateStock(data);
         res.status(201).json(result)
     }catch(err){
         res.status(404).json({err : err.message})
     }
 }
+
+// async function updateStock(req, res){
+
+// }
 
 
 module.exports = {index, show, create, destroy, update, updateStock}

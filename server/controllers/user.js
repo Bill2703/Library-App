@@ -1,17 +1,17 @@
 const bcrypt = require('bcrypt');
 
 const User = require('../models/User');
-const Token = require("../models/Token")
+const Token = require("../models/token")
 
 async function register (req, res) {
     const data = req.body;
     //CREATING HASH FOR PASSWORDS
-    console.log("pre-hash: " + data);
+    console.log(data);
     
     const salt = await bcrypt.genSalt(parseInt(process.env.BCRYPT_SALT_ROUNDS));
     data["password"]= await bcrypt.hash(data.password, salt);
 
-    console.log("post-hash: " + data);
+    console.log(data);
 
     const result = await User.create(data);
     console.log(result);

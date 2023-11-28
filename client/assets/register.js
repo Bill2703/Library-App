@@ -69,7 +69,7 @@ function handleRegistrationResponse(response) {
         }, 3000);
     } else {
         // If registration failed, display the error message
-        response.json().then(data => alert(data.error));
+        response.json().then(data => alert(data.error)).catch(() => alert("Failed to parse error message."));
     }
 }
 
@@ -107,8 +107,21 @@ function validateEmail(email) {
 function validatePassword(password, fullName) {
     const hasUpperCase = /[A-Z]/.test(password);
     const hasNumber = /\d/.test(password);
-    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>+=~\\-]/.test(password);
     const isLongEnough = password.length > 8;
     const doesNotIncludeName = !password.toLowerCase().includes(fullName.toLowerCase());
+
+    console.log({ hasUpperCase, hasNumber, hasSpecialChar, isLongEnough, doesNotIncludeName });
+
     return hasUpperCase && hasNumber && hasSpecialChar && isLongEnough && doesNotIncludeName;
 }
+
+document.getElementById('togglePassword').addEventListener('click', function (e) {
+    // Toggle the type attribute using getAttribute() and setAttribute()
+    const passwordInput = document.getElementById('password');
+    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput.setAttribute('type', type);
+
+    // Toggle the button text
+    this.textContent = type === 'password' ? 'Show Password' : 'Hide Password';
+});

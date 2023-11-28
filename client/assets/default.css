@@ -50,6 +50,12 @@ p{
   color: #b6b4b4;
 }
 
+.container1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
 /* Dashboard Styles */
 /* #dashboard {

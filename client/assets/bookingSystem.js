@@ -25,7 +25,7 @@ async function updateStock(book) {
     });
 
     if (!response.ok) {
-        throw new Error('Failed to update stock');
+        window.location.assign("./login.html");
     }
 }
 
@@ -54,7 +54,11 @@ function sendBookingConfirmation(book, date, time) {
     // Remove the popup after 7 seconds
     setTimeout(() => {
         popup.remove();
-    }, 7000);
+        window.location.assign("./bookpage.html")
+        localStorage.removeItem("token");
+        localStorage.removeItem("selectedBook");
+    }, 3000);
+
 }
 
 // Add event listeners

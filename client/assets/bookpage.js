@@ -12,6 +12,8 @@ async function fetchAndDisplayBooks() {
 
     // Redirect to login page if the response status is not 200
     if (response.status !== 200) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("selectedBook");
         window.location.assign("./login.html");
         return;
     }

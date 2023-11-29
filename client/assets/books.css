@@ -84,7 +84,7 @@ body {
 
 .book-item img {
     width: 100%;
-    height: 55%;
+    height: auto;
     display: block;
 }
 

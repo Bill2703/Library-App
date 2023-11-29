@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,40 +10,52 @@
     <script src="./assets/register.js" defer></script>
     <title>Register - Florin County Council Community Library Booking System</title>
 </head>
+
 <body>
     <div class="container">
         <div id="dashboard">
             <div class="brand-logo"></div>
-            <p1></p>
-            <form id="register-form">
-                
+            <p1>
+                </p>
+                <form id="register-form">
+
                     <label for="fullName">FullName:</label>
-                    <input type="text" id="fullName" name="fullName"
-                    placeholder="FullName">
-              
-             
+                    <input type="text" id="fullName" name="fullName" placeholder="FullName">
+
+
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email"
-                    placeholder="example@test.com">
-                
+                    <input type="email" id="email" name="email" placeholder="example@test.com">
+
                     <label for="username">Username:</label>
-                    <input type="text" id="username" name="username"
-                    placeholder="username">
-          
+                    <input type="text" id="username" name="username" placeholder="username">
+
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" placeholder="password">
 
                     <button type="button" id="togglePassword">Show Password</button>
-             
-                <input type="submit" value="Register" href="./login.html" class="card-button">
-            </form>
-            <p>Already registered? <a href="./login.html">Log in here</a>.</p>
-            <div class="footer">
-                &copy; 2023 Florin County Council Community Library Booking System. All
-                rights reserved.
-            </div>
+
+                    <input type="submit" value="Register" href="./login.html" class="card-button">
+                </form>
+
+                <!-- Password Requirements Checklist -->
+                <div id="passwordRequirements">
+                    <ul>
+                        <li id="lengthCheck">At least 8 characters</li>
+                        <li id="capitalCheck">At least one capital letter</li>
+                        <li id="numberCheck">At least one number</li>
+                        <li id="specialCheck">At least one special character</li>
+                        <li id="nameCheck">Should not include your name</li>
+                    </ul>
+                </div>
+
+                <p>Already registered? <a href="./login.html">Log in here</a>.</p>
+                <div class="footer">
+                    &copy; 2023 Florin County Council Community Library Booking System. All
+                    rights reserved.
+                </div>
         </div>
     </div>
-   
+
 </body>
+
 </html>

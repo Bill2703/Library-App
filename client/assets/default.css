@@ -50,6 +50,7 @@ body {
   border-radius: 50%;
   box-sizing: border-box;
   box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
+  
 }
 
 h1 {
@@ -69,15 +70,6 @@ p1 {
   font-weight: 700;
   padding-top: 45px;
   font-size: 20px;
-}
-
-.footer {
-  margin-top: auto;
-  padding: 10px;
-  text-align: center;
-  font-size: 10px;
-  color: #b6b4b4;
-  font-weight: 300;
 }
 
 .container1 {
@@ -135,7 +127,7 @@ input {
 button {
   color: white;
   margin-top: 15px;
-  background: #237189;
+  background: #9cbfbb;
   height: 40px;
   border-radius: 20px;
   cursor: pointer;
@@ -153,7 +145,7 @@ button:hover {
 a {
   color: white;
   margin-top: 10%;
-  background: #237189;
+  background:#9cbfbb;
   height: 40px;
   border-radius: 20px;
   cursor: pointer;
@@ -171,6 +163,14 @@ a:hover {
   box-shadow: none;
 }
 
+.footer {
+  margin-top: auto;
+  padding: 10px;
+  text-align: center;
+  font-size: 10px;
+  color: #b6b4b4;
+  font-weight: 300;
+}
 
 /* #password-requirements {
   display: none;

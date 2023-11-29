@@ -10,13 +10,13 @@ body {
 
 /* Dashboard Styles */
 #dashboard1{
-    background-color: #ffffff;
+    background-color: #f2eee7;
     color: rgb((97, 0, 0)55, 255, 255);
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #ecf0f3;
+    background: #f2eee7;
     box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
 }
 
@@ -28,7 +28,7 @@ body {
 
 #menu-button,
 #account-button {
-    background-color: #007bff;
+    background-color:#9cbfbb;
     color: white;
     padding: 10px 15px;
     text-decoration: none;
@@ -38,7 +38,7 @@ body {
 
 #menu-button:hover,
 #account-button:hover {
-    background-color: #0056b3;
+    background-color: #9cbfbb;
 }
 
 .button-2 {
@@ -112,7 +112,7 @@ body {
 
 .card-button {
     color: white;
-    background: #237189;
+    background: #9cbfbb;
     cursor: pointer;
     box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
     transition: background-color 0.2s ease-in-out;
@@ -137,7 +137,7 @@ body {
 }
 
 .card-button:hover {
-    background-color: #4251b5;
+    background-color: #0d3b44;
 }
 
 @media (max-width: 600px) {

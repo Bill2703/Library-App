@@ -26,18 +26,17 @@ class Post {
         const response = await db.query(
             "SELECT post.post_id, post.user_id, post.book_id, post.title, post.content, user_account.username " +
             "FROM post " +
-            "JOIN user_account ON post.user_id = user_account.user_id " +
+            "INNER JOIN user_account ON post.user_id = user_account.user_id " +
             "WHERE post.book_id = $1",
             [book_id]
         );
-    
+
         if (response.rows.length === 0) {
             throw new Error("No posts!");
         }
-    
         return response.rows.map(p => new Post(p));
     }
-    
+
 
     static async create(data) {
         const { user_id, book_id, title, content } = data;

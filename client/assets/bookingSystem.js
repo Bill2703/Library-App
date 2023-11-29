@@ -4,10 +4,10 @@ const bookReturn = document.getElementById("returnBook");
 const bookingDateInput = document.getElementById('date');
 const bookingTimeInput = document.getElementById('time');
 const bookNowLink = document.getElementById("bookNow");
+const stars = document.querySelectorAll(".stars i")
 const logout = document.getElementById("logout");
 const back = document.getElementById("back");
 let alreadyRented =  false;
-
 
 
 // Display the selected book's title in the designated area
@@ -15,6 +15,19 @@ function displaySelectedBook() {
     const nameSpace = document.getElementById("additionalInfo");
     nameSpace.textContent = selectedBook.title;
 }
+
+
+stars.forEach((star, index1) => {
+    let num = index1 + 1; 
+    star.addEventListener("click", () => {
+        stars.forEach((star, index2) => {
+            index1 >= index2 ? star.classList.add("active") : star.classList.remove("active")
+        })
+        localStorage.setItem("rating", num)
+        let selectedRating = localStorage.getItem("rating");
+        console.log(selectedRating);
+    })
+})
 
 // Update the stock of the selected book on the server
 async function updateStock(book) {

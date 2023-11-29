@@ -3,6 +3,7 @@ const selectedBook = JSON.parse(localStorage.getItem('selectedBook'));
 const bookReturn = document.getElementById("returnBook");
 const bookingDateInput = document.getElementById('date');
 const bookingTimeInput = document.getElementById('time');
+const ratingBtn = document.getElementById("rating-btn");
 const bookNowLink = document.getElementById("bookNow");
 const stars = document.querySelectorAll(".stars i")
 const logout = document.getElementById("logout");
@@ -24,10 +25,45 @@ stars.forEach((star, index1) => {
             index1 >= index2 ? star.classList.add("active") : star.classList.remove("active")
         })
         localStorage.setItem("rating", num)
-        let selectedRating = localStorage.getItem("rating");
-        console.log(selectedRating);
+        let selectedRating1 = localStorage.getItem("rating");
+        console.log(selectedRating1);
     })
 })
+
+async function updateRating(book) {
+    const selectedRating = localStorage.getItem("rating");
+    const { title } = book;
+    // Check if a rating has been selected
+    if (!selectedRating) {
+        alert("Please select a rating before submitting.");
+        return;
+    }
+
+    // Update the rating on the server
+    try {
+        const response = await fetch(`http://localhost:3000/books/rating/${title}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('token'),
+            },
+            body: JSON.stringify({ rating: selectedRating }),
+        });
+        
+        if (!response.ok) {
+            window.location.assign("./login.html")
+        } else {
+            alert("Thanks for the rating!")
+            localStorage.removeItem("rating");
+            localStorage.removeItem("selectedBook")
+            window.location.assign("./bookpage.html")
+        }
+    } catch (error) {
+        console.error('Error during fetch:', error);
+        // Handle the error as needed (e.g., show an alert)
+    }
+};
+
 
 // Update the stock of the selected book on the server
 async function updateStock(book) {
@@ -67,6 +103,8 @@ async function returnBook(book) {
             body: JSON.stringify({ user_id: user_id }),
         });
 
+        const ratingBox = document.querySelector(".rating-box")
+
         if (!response.ok) {
             if (response.status === 400) {
                 alert("You have not rented this book yet!");
@@ -79,8 +117,7 @@ async function returnBook(book) {
             }
         } else {
             alert("Thanks for returning the book!")
-            localStorage.removeItem("selectedBook")
-            window.location.assign("./bookpage.html")
+            ratingBox.style.visibility = "visible";
         }
     } catch (error) {
         console.error('Error during returnBook:', error);
@@ -122,6 +159,7 @@ function setupEventListeners() {
     logout.addEventListener("click", handleLogout);
     back.addEventListener("click", handleBack);
     bookReturn.addEventListener("click",() => returnBook(selectedBook))
+    ratingBtn.addEventListener("click", () => updateRating(selectedBook))
 }
 
 async function handleBookNowClick(event) {
@@ -156,7 +194,6 @@ function handleLogout() {
     localStorage.removeItem("selectedBook");
     localStorage.removeItem("username")
     localStorage.removeItem("user_id")
-    window.location.assign("./login.html")
 }
 
 // Handle 'Back' button click

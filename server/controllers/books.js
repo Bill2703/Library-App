@@ -105,14 +105,18 @@ async function returnBook(req, res) {
 
 async function updateRating(req,res){
     try{
+        console.log("hit1");
         const title = req.params.name;
         const titleToLower = title.toLowerCase();
         const data = req.body;
     
+        console.log("hit2");
+
         const book = await Book.getOneByBookName(titleToLower);
         const rating = data.rating;
         const book_id = book.id;
     
+
         await Book.updateRating(book_id, rating);
         res.status(200).json({message: "Updated rating!"})
 

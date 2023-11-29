@@ -3,7 +3,6 @@ const Book = require("../models/Book")
 async function index(req,res) {
     try {
         const books = await Book.getAll();
-        //console.log(books);
         res.status(200).json(books)
     } catch(err) {
         res.status(500).json({error: err.message})
@@ -12,7 +11,7 @@ async function index(req,res) {
 
 async function show(req,res){
     try{
-        let name = req.params.name.toLowerCase(); //expected parameter at endpoint = name
+        let name = req.params.name.toLowerCase(); 
         const book = await Book.getOneByBookName(name)
         res.status(200).json(book)
     }catch (err) {
@@ -45,12 +44,9 @@ async function update(req,res){
     try{
         const name = req.params.name.toLowerCase();
         const data = req.body;
-        console.log("NAME: " + name); 
-        console.log(data);
+
         const book = await Book.getOneByBookName(name)
-        //console.log(book);
         let result = await book.update(data);
-        //console.log(result);
         res.status(201).json(result)
     }catch(err){
         res.status(404).json({err : err.message})
@@ -62,13 +58,51 @@ async function updateStock(req,res){
         const name = req.params.name.toLowerCase();
         const data = req.body;
 
+        const user_id = data.user_id;
+        const book_id = data.book_id;
         const book = await Book.getOneByBookName(name)
+
+        const hasRented = await Book.hasUserRentedBook(user_id, book_id);
+        if (hasRented) {
+            // Handle the case where the user has already rented the book
+            return res.status(400).json({ error: "User has already rented this book." });
+        }
+
         let result = await book.updateStock(data);
+        await Book.insertRental(user_id, book_id)
+
         res.status(201).json(result)
     }catch(err){
         res.status(404).json({err : err.message})
     }
 }
 
+async function returnBook(req, res) {
+    try {
+        const title = req.params.name;
+        const titleToLower = title.toLowerCase();
+        const data = req.body;
 
-module.exports = {index, show, create, destroy, update, updateStock}
+        const book = await Book.getOneByBookName(titleToLower);
+
+        const hasRented = await Book.hasUserRentedBook(data.user_id, book.id);
+        if (!hasRented) {
+            return res.status(400).json({ error: "User has not rented this book." });
+        }
+
+        await book.updateStock({title, stock: book.stock + 1 });
+
+        console.log(data.user_id);
+        console.log(book.id);
+        await Book.deleteRental(data.user_id, book.id);
+
+        res.status(200).json({ message: 'Book returned successfully.' });
+    } catch (err) {
+        console.error('Error during book return:', err);
+        res.status(500).json({ error: 'Failed to return book.' });
+    }
+}
+
+
+
+module.exports = {index, show, create, destroy, update, updateStock, returnBook}

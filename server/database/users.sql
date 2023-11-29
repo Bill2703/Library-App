@@ -1,11 +1,14 @@
 -- Purpose: Store user registration details.
+DROP TABLE IF EXISTS token CASCADE;
+DROP TABLE IF EXISTS user_account CASCADE;
 
 CREATE TABLE user_account (
-    user_id INT GENERATED ALWAYS AS IDENTITY,
+    user_id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    fullName VARCHAR(30) NOT NULL,
+    email VARCHAR(30) NOT NULL,
     username VARCHAR(30) UNIQUE NOT NULL,
     password CHAR(60) NOT NULL,
-    isAdmin BOOLEAN DEFAULT false,
-    PRIMARY KEY (user_id)
+    isAdmin BOOLEAN DEFAULT false
 );
 
 CREATE TABLE token(

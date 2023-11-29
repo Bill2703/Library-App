@@ -1,68 +1,117 @@
-document.addEventListener("DOMContentLoaded", async function () {
-    
-    const options = {
-        headers: {
-            authorization: localStorage.getItem("token"),
-        }
+// Function to handle fetching and displaying books
+async function fetchAndDisplayBooks() {
+  // Setup the request options, including authorization header
+  const options = {
+    headers: {
+      authorization: localStorage.getItem("token"),
+    },
+  };
+
+  // Fetch book data from the server
+  const response = await fetch("http://localhost:3000/books", options);
+
+  // Redirect to login page if the response status is not 200
+  if (response.status !== 200) {
+    localStorage.removeItem("token");
+    localStorage.removeItem("selectedBook");
+    window.location.assign("./login.html");
+    return;
+  }
+
+  // Parse the JSON response to get book data
+  const books = await response.json();
+
+  // Get the book list container in the DOM
+  const bookList = document.getElementById("book-list");
+
+  // Iterate over each book in the data
+  books.forEach((book) => {
+    // Only display the book if its stock is greater than 0
+    if (book.stock > 0) {
+      // Create and append book elements to the book list
+      appendBookToDOM(book, bookList);
     }
-    const response = await fetch('http://localhost:3000/books', options);
+  });
+}
 
-    if (response.status !== 200) {
-        window.location.assign("./login.html");
-        return;
-    }
-    const data = await response.json();
+// Function to create and append book elements to the DOM
+function appendBookToDOM(book, bookList) {
+  // Create list item for the book
+  const bookItem = document.createElement("li");
+  bookItem.className = "book-item";
 
-    const bookList = document.getElementById('book-list');
+  // Create and setup book cover image
+  const coverImage = document.createElement("img");
+  coverImage.src = book.coverimageurl;
+  coverImage.alt = "Book Cover";
 
-    data.forEach(book => {
-        const bookItem = document.createElement('li');
-        bookItem.className = 'book-item';
+  // Create div container for book details
+  const bookDetailContainer = document.createElement("div");
+  bookDetailContainer.className = "book-detail-container";
 
-        const coverImage = document.createElement('img');
-        coverImage.src = book.coverimageurl;
-        coverImage.alt = 'Book Cover';
+  // Create popup div for book details
+  const bookPopup = document.createElement("div");
+  bookPopup.className = "book-popup";
 
-        const bookPopup = document.createElement('div');
-        bookPopup.className = 'book-popup';
+  // Add book title, author, and summary to the popup
+  bookPopup.appendChild(createElementWithText("h3", book.title));
+  bookPopup.appendChild(createElementWithText("p", "Author: " + book.author));
+  bookPopup.appendChild(createElementWithText("p", "Summary: " + book.blurb));
 
-        const titleElement = document.createElement('h3');
-        titleElement.textContent = book.title;
+  // Append book details to the detail container
+  bookDetailContainer.appendChild(bookPopup);
 
-        const authorElement = document.createElement('p');
-        authorElement.textContent = 'Author: ' + book.author;
+  // Create and setup 'Book Now' link
+  const bookNowLink = document.createElement("a");
+  bookNowLink.href = "bookingSystem.html";
+  bookNowLink.className = "card-button";
+  bookNowLink.setAttribute("data-room", "book");
 
-        const summaryElement = document.createElement('p');
-        summaryElement.textContent = 'Summary: ' + book.blurb;
+  // Add text node for 'Book Now' after the stock span
+  bookNowLink.appendChild(document.createTextNode(" Book Now"));
+  // Create and setup 'Stock' span to be included inside the 'Book Now' link
+  const stockSpan = document.createElement("span");
+  stockSpan.className = "stock-info";
+  stockSpan.textContent = `Stock: ${book.stock}`;
 
-        const bookNowLink = document.createElement('a');
-        bookNowLink.href = 'bookingSystem.html';
+  // Append the 'Stock' span to the 'Book Now' link
+  bookNowLink.appendChild(stockSpan);
 
-        // Store the selected book information in localStorage
-        bookNowLink.addEventListener('click', function () {
-            localStorage.setItem('selectedBook', JSON.stringify(book));
-        });
+  // Add event listener to store selected book on click
+  bookNowLink.addEventListener("click", () => {
+    localStorage.setItem("selectedBook", JSON.stringify(book));
+  });
 
-        bookNowLink.className = 'card-button';
-        bookNowLink.setAttribute('data-room', 'book');
-        bookNowLink.textContent = 'Book Now';
+  // Append the 'Book Now' link to the book detail container
+  bookDetailContainer.appendChild(bookNowLink);
 
-        // Append the elements to the bookPopup
-        bookPopup.appendChild(titleElement);
-        bookPopup.appendChild(authorElement);
-        bookPopup.appendChild(summaryElement);
-        bookPopup.appendChild(bookNowLink);
+  // Append cover image and detail container to the book item
+  bookItem.appendChild(coverImage);
+  bookItem.appendChild(bookDetailContainer);
 
-        // Append the coverImage and bookPopup to the bookItem
-        bookItem.appendChild(coverImage);
-        bookItem.appendChild(bookPopup);
+  // Append the book item to the book list
+  bookList.appendChild(bookItem);
+}
 
-        // Append the bookItem to the bookList
-        bookList.appendChild(bookItem);
-    });
-});
+// Helper function to create an HTML element with text content
+function createElementWithText(tag, text) {
+  const element = document.createElement(tag);
+  element.textContent = text;
+  return element;
+}
 
+// Helper function to create an HTML element with text content
+function createElementWithText(tag, text) {
+  const element = document.createElement(tag);
+  element.textContent = text;
+  return element;
+}
+
+// Event listener for logout functionality
 const logout = document.getElementById("logout");
 logout.addEventListener("click", () => {
-    localStorage.removeItem("token")
+  localStorage.removeItem("token");
 });
+
+// Start fetching and displaying books on DOMContentLoaded
+document.addEventListener("DOMContentLoaded", fetchAndDisplayBooks);

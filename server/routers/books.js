@@ -10,5 +10,6 @@ bookRouter.post("/", bookController.create)
 bookRouter.delete("/:name", bookController.destroy)
 bookRouter.patch("/:name", bookController.update)
 bookRouter.patch("/stock/:name", authenticator, bookController.updateStock)
+bookRouter.patch("/return/:name", authenticator, bookController.returnBook)
 
 module.exports = bookRouter;

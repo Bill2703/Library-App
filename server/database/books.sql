@@ -1,7 +1,4 @@
-DROP TABLE IF EXISTS book_rental;
-DROP TABLE IF EXISTS token;
-DROP TABLE IF EXISTS user_account;
-DROP TABLE IF EXISTS book;
+DROP TABLE IF EXISTS book CASCADE;
 
 CREATE TABLE book (
     book_id INT GENERATED ALWAYS AS IDENTITY,
@@ -12,7 +9,6 @@ CREATE TABLE book (
     coverImageURL VARCHAR(255),
     PRIMARY KEY (book_id)
 );
-
 
 INSERT INTO book (title, author, blurb, stock, coverImageURL) VALUES
   ('To Kill a Mockingbird', 'Harper Lee', 'Set in the racially charged atmosphere of the American South during the 1930s, "To Kill a Mockingbird" explores themes of justice, morality, and compassion through the eyes of Scout Finch, a young girl witnessing her father''s struggle to defend an innocent black man accused of rape.', 4, 'https://m.media-amazon.com/images/I/41j-s9fHJcL.jpg'),

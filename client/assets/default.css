@@ -131,35 +131,36 @@ button {
   height: 40px;
   border-radius: 20px;
   cursor: pointer;
-  font-weight: 900;
+  font-weight: 300;
   box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
   transition: 0.5s;
   text-decoration: none;
-  font-weight: 300;
+
 }
 
 button:hover {
   box-shadow: none;
 }
 
-a {
-  color: white;
-  margin-top: 10%;
-  background:#9cbfbb;
-  height: 40px;
-  border-radius: 20px;
+a.card-button {
+  display: block;
+  width: 100%;
+  padding: 10px 0; /* Match your button padding */
+  height: 40px; /* Match your button height */
+  border-radius: 20px; 
+  background: #9cbfbb; /* Background color */
+  color: white; /* Text color */
+  text-align: center; 
+  margin-top: 15px;
   cursor: pointer;
   font-weight: 300;
   box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
   transition: 0.5s;
-  padding-inline: 15px;
-  padding-top: 5px;
   text-decoration: none;
   font-size: small;
-  font-family: "Poppins", sans-serif;
 }
 
-a:hover {
+a.card-button:hover {
   box-shadow: none;
 }
 

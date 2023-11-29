@@ -25,6 +25,7 @@ body {
   height: 100vh;
   padding: auto;
   overflow-y: auto;
+  
 }
 
 #dashboard {
@@ -36,7 +37,7 @@ body {
   border-radius: 10px;
   width: 350px;
   height: auto;
-  background: #f7faf2;
+  background: #ecf0f3;
   box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
 }
 
@@ -45,7 +46,7 @@ body {
   background-size: contain;
   height: 100px;
   width: 100px;
-  margin: auto;
+  margin: 0 auto;
   border-radius: 50%;
   box-sizing: border-box;
   box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
@@ -100,6 +101,7 @@ button {
   outline: none;
   box-sizing: border-box;
   font-weight: 300;
+
 }
 
 label {

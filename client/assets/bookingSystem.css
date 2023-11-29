@@ -1,12 +1,26 @@
 /* Form Styling */
+
+#dashboard1{
+    background-color: #ffffff;
+    color: rgb((97, 0, 0)55, 255, 255);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ecf0f3;
+    box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+    margin-bottom: 30px;
+}
+
+
 #bookingForm {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
-    background-color: #60606077;
     padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: #f7faf2;
+    box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+    border-radius: 10px;
 }
 
 #bookingForm label {
@@ -17,13 +31,13 @@
 
 #bookingForm input[type="date"],
 #bookingForm input[type="time"] {
-    width: 100%;
+    background: #ecf0f3;
     padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: #56565658;
-    color: #fff;
+    padding-left: 20px;
+    height: 50px;
+    font-size: 14px;
+    border-radius: 50px;
+    box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
 }
 
 #bookingForm button {
@@ -33,14 +47,38 @@
     background-color: #0056b3;
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 50px;
     cursor: pointer;
     transition: background-color 0.3s;
+    box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
 }
 
 #bookingForm button:hover {
     background-color: #004494;
 }
+
+.button-2 {
+    background-color: #ece2e2;
+    border-radius: 8px;
+    border-width: 0;
+    color: #333333;
+    cursor: pointer;
+    display: inline-block;
+    font-family:"Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 10px 12px;
+    text-align: center;
+    transition: all 200ms;
+    vertical-align: baseline;
+    white-space: nowrap;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
 
 /* Additional Info Section */
 #additionalInfo {

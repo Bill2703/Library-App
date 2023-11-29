@@ -171,12 +171,12 @@ a:hover {
   box-shadow: none;
 }
 
-#password-requirements {
+/* #password-requirements {
   display: none;
   /* Additional styling for the tooltip like background-color, padding, etc. */
-}
+ 
 
-#password:hover + #password-requirements {
+/* #password:hover + #password-requirements {
   display: block;
-}
+} */
 

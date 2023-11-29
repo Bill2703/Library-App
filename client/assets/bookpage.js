@@ -53,6 +53,7 @@ function appendBookToDOM(book, bookList) {
     bookPopup.appendChild(createElementWithText('h3', book.title));
     bookPopup.appendChild(createElementWithText('p', 'Author: ' + book.author));
     bookPopup.appendChild(createElementWithText('p', 'Summary: ' + book.blurb));
+    bookPopup.appendChild(createElementWithText('p', 'Stock: ' + book.stock));
 
     // Create and setup 'Book Now' link
     const bookNowLink = document.createElement('a');

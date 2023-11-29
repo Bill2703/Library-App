@@ -29,11 +29,23 @@ async function handleRegistration(event) {
     }
 }
 
+// Function to update the password requirements checklist
+function updatePasswordChecklist(password, fullName) {
+    document.getElementById('lengthCheck').style.color = password.length >= 8 ? 'green' : 'red';
+    document.getElementById('capitalCheck').style.color = /[A-Z]/.test(password) ? 'green' : 'red';
+    document.getElementById('numberCheck').style.color = /[0-9]/.test(password) ? 'green' : 'red';
+    document.getElementById('specialCheck').style.color = /[!@#$%^&*(),.?":{}|<>]/.test(password) ? 'green' : 'red';
+    document.getElementById('nameCheck').style.color = !password.includes(fullName) ? 'green' : 'red';
+}
+
 // Function to validate the user's input data
 function isValidFormData({ fullName, email, password }) {
+    // Update the checklist based on the current password
+    updatePasswordChecklist(password, fullName);
+
     // Check if the password meets the criteria
     if (!validatePassword(password, fullName)) {
-        alert("Password must be more than 8 characters, include a capital letter, a number, a special character, and must not include your name.");
+        alert("Your password does not meet the requirements.");
         return false;
     }
 

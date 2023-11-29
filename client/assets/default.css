@@ -10,8 +10,12 @@ body {
   text-align: center;
   font-weight: 300;
   background-image: url(../assets/landing.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
+  position: relative;
   color: rgb(87, 91, 120);
+  
 }
 
 .container {
@@ -19,7 +23,8 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
- 
+  padding: auto;
+  overflow-y: auto;
 }
 
 #dashboard {
@@ -55,6 +60,8 @@ h1 {
 
 p {
   padding-top: 25px;
+  font-weight: 300;
+  font-size: small;
 }
 
 p1 {
@@ -89,10 +96,10 @@ input,
 button {
   display: block;
   width: 100%;
-  padding: 0;
   border: none;
   outline: none;
   box-sizing: border-box;
+  font-weight: 300;
 }
 
 label {
@@ -125,7 +132,7 @@ input {
 
 button {
   color: white;
-  margin-top: 25%;
+  margin-top: 15px;
   background: #237189;
   height: 40px;
   border-radius: 20px;
@@ -134,6 +141,7 @@ button {
   box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
   transition: 0.5s;
   text-decoration: none;
+  font-weight: 300;
 }
 
 button:hover {
@@ -145,7 +153,7 @@ a {
   margin-top: 10%;
   background: #237189;
   height: 40px;
-  border-radius: 10px;
+  border-radius: 20px;
   cursor: pointer;
   font-weight: 300;
   box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
@@ -153,6 +161,8 @@ a {
   padding-inline: 15px;
   padding-top: 5px;
   text-decoration: none;
+  font-size: small;
+  font-family: "Poppins", sans-serif;
 }
 
 a:hover {

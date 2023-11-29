@@ -1,11 +1,14 @@
 // Global variables for form inputs and selected book details
 const selectedBook = JSON.parse(localStorage.getItem('selectedBook'));
+const bookReturn = document.getElementById("returnBook");
 const bookingDateInput = document.getElementById('date');
 const bookingTimeInput = document.getElementById('time');
 const bookNowLink = document.getElementById("bookNow");
 const logout = document.getElementById("logout");
 const back = document.getElementById("back");
 let alreadyRented =  false;
+
+
 
 // Display the selected book's title in the designated area
 function displaySelectedBook() {
@@ -37,6 +40,34 @@ async function updateStock(book) {
         console.error('Error during updateStock:', error);
     }
 }
+
+async function returnBook(book) {
+    const user_id = localStorage.getItem("user_id");
+    const { title, stock } = book;
+    try {
+        const response = await fetch(`http://localhost:3000/books/return/${title}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('token'),
+            },
+            body: JSON.stringify({ user_id: user_id }),
+        });
+
+        if (!response.ok) {
+            if (response.status === 400) {
+                alert("You have not rented this book yet!");
+            } else {
+                console.error('Error returning book:', response.statusText);
+            }
+        } else {
+            alert("Thanks for returning the book!")
+        }
+    } catch (error) {
+        console.error('Error during returnBook:', error);
+    }
+}
+
 // Simulate sending a booking confirmation
 function sendBookingConfirmation(book, date, time) {
     // Create a popup element
@@ -67,14 +98,13 @@ function sendBookingConfirmation(book, date, time) {
 
 }
 
-// Add event listeners
 function setupEventListeners() {
     bookNowLink.addEventListener('click', handleBookNowClick);
     logout.addEventListener("click", handleLogout);
     back.addEventListener("click", handleBack);
+    bookReturn.addEventListener("click",() => returnBook(selectedBook))
 }
 
-// Handle 'Book Now' button click
 async function handleBookNowClick(event) {
     event.preventDefault();
     const bookingDate = bookingDateInput.value;
@@ -99,6 +129,7 @@ async function handleBookNowClick(event) {
         console.error('Error during booking:', error);
     }
 }
+
 
 // Handle 'Logout' button click
 function handleLogout() {

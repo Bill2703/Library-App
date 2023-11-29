@@ -58,6 +58,7 @@ function appendBookToDOM(book, bookList) {
     bookPopup.appendChild(createElementWithText('h3', book.title));
     bookPopup.appendChild(createElementWithText('p', 'Author: ' + book.author));
     bookPopup.appendChild(createElementWithText('p', 'Summary: ' + book.blurb));
+    bookPopup.appendChild(createElementWithText('p', `Stock: ${book.stock}`))
 
     // Append book details to the detail container
     bookDetailContainer.appendChild(bookPopup);

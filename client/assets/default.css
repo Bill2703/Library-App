@@ -19,6 +19,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+ 
 }
 
 #dashboard {
@@ -81,7 +82,9 @@ p1 {
   margin-top: 30px;
 }
 
-label,input,button {
+label,
+input,
+button {
   display: block;
   width: 100%;
   padding: 0;
@@ -154,37 +157,3 @@ a:hover {
   box-shadow: none;
 }
 
-.password-container {
-  position: relative;
-}
-
-input[type="password"] {
-  padding-right: 40px; /* Ensure space for the button */
-}
-
-#togglePassword {
-  position: absolute;
-  right: 10px; /* Adjust the position as needed */
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-/* Add this CSS for the eye icon */
-input[type="password"]::before {
-  content: "\f06e"; /* Unicode for the eye icon in Font Awesome */
-  font-family: "FontAwesome"; /* Use the correct font family for your icon library */
-  position: absolute;
-  right: 10px; /* Adjust the position as needed */
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 20px; /* Adjust the size as needed */
-  color: #666; /* Color of the icon when not active */
-  cursor: pointer;
-}
-
-input[type="password"].show-password::before {
-  content: "\f070"; /* Unicode for the eye-slash icon in Font Awesome when password is visible */
-}

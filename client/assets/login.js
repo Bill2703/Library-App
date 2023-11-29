@@ -1,10 +1,13 @@
 // Function to process successful login
-function processSuccessfulLogin(token) {
+function processSuccessfulLogin(token, user) {
     // Store the user's token in localStorage
     localStorage.setItem("token", token);
 
     // Display a popup message indicating successful login
     showLoginSuccessPopup();
+
+    localStorage.setItem("user_id", user.id)
+    localStorage.setItem("username", user.username)
 
     // Schedule a redirection to the menu page after a short delay
     setTimeout(() => {
@@ -75,10 +78,9 @@ async function handleLoginFormSubmission(event) {
     try {
         const response = await fetch("http://localhost:3000/users/login", requestOptions);
         const data = await response.json();
-
         // Handle the API response
         if (response.status === 200) {
-            processSuccessfulLogin(data.token);
+            processSuccessfulLogin(data.token, data.user);
         } else {
             displayErrorMessage(data.message || 'Invalid username or password');
         }

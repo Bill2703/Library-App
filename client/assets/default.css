@@ -25,6 +25,7 @@ body {
   height: 100vh;
   padding: auto;
   overflow-y: auto;
+  
 }
 
 #dashboard {
@@ -36,7 +37,7 @@ body {
   border-radius: 10px;
   width: 350px;
   height: auto;
-  background: #f7faf2;
+  background: #ecf0f3;
   box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
 }
 

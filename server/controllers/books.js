@@ -103,6 +103,28 @@ async function returnBook(req, res) {
     }
 }
 
+async function updateRating(req,res){
+    try{
+        console.log("hit1");
+        const title = req.params.name;
+        const titleToLower = title.toLowerCase();
+        const data = req.body;
+    
+        console.log("hit2");
+
+        const book = await Book.getOneByBookName(titleToLower);
+        const rating = data.rating;
+        const book_id = book.id;
+    
+
+        await Book.updateRating(book_id, rating);
+        res.status(200).json({message: "Updated rating!"})
+
+    }catch(err){
+        console.error('Error during rating update:', err);
+        res.status(500).json({ error: 'Failed to update rating' });
+    }
+}
 
 
-module.exports = {index, show, create, destroy, update, updateStock, returnBook}
+module.exports = {index, show, create, destroy, update, updateStock, returnBook, updateRating}

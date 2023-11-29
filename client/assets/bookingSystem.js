@@ -58,10 +58,16 @@ async function returnBook(book) {
             if (response.status === 400) {
                 alert("You have not rented this book yet!");
             } else {
-                console.error('Error returning book:', response.statusText);
+                localStorage.removeItem("user_id");
+                localStorage.removeItem("username")
+                localStorage.removeItem("selectedBook");
+                window.location.assign("./login.html");
+                return;
             }
         } else {
             alert("Thanks for returning the book!")
+            localStorage.removeItem("selectedBook")
+            window.location.assign("./bookpage.html")
         }
     } catch (error) {
         console.error('Error during returnBook:', error);

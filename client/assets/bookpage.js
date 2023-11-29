@@ -35,7 +35,6 @@ async function fetchAndDisplayBooks() {
 }
 
 // Function to create and append book elements to the DOM
-// Function to create and append book elements to the DOM
 function appendBookToDOM(book, bookList) {
     // Create list item for the book
     const bookItem = document.createElement('li');

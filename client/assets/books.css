@@ -84,8 +84,9 @@ body {
 
 .book-item img {
     width: 100%;
-    height: auto;
+    height: 45%;
     display: block;
+    border-radius: 10px;
 }
 
 .book-popup {

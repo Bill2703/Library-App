@@ -1,13 +1,15 @@
 const db = require("../database/connect")
 
 class Book{
-    constructor({book_id, title, author, blurb, stock, coverimageurl}) {
+    constructor({book_id, title, author, blurb, stock, coverimageurl, total_rating, rating_count}) {
         this.id = book_id
         this.title = title
         this.author = author
         this.blurb = blurb
         this.stock = stock
         this.coverimageurl = coverimageurl
+        this.total_rating = total_rating
+        this.rating_count = rating_count
     }
     
 

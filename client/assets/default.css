@@ -31,7 +31,7 @@ body {
   border-radius: 10px;
   width: 350px;
   height: auto;
-  background: #ecf0f3;
+  background: #f7faf2;
   box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
 }
 
@@ -40,6 +40,7 @@ body {
   background-size: contain;
   height: 100px;
   width: 100px;
+  margin: auto;
   border-radius: 50%;
   box-sizing: border-box;
   box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;

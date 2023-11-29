@@ -5,18 +5,19 @@ body {
     font-family: "Poppins", sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    
+    background-color: #ffffff;
 }
 
 /* Dashboard Styles */
-#dashboard {
-    background-color: #333;
-    color: white;
+#dashboard1{
+    background-color: #ffffff;
+    color: rgb((97, 0, 0)55, 255, 255);
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: #ecf0f3;
+    box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
 }
 
 #dashboard p {
@@ -75,9 +76,10 @@ body {
 .book-item {
     background-color: white;
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    position: relative; /* Add this to position the button at the bottom of this container */
-    padding-bottom: 50px; /* Add padding to ensure there's space for the button */
+    position: relative;
+    padding-bottom: 50px; 
+    background: #ecf0f3;
+    box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
 }
 
 .book-item:hover {
@@ -108,19 +110,17 @@ body {
 }
 
 .card-button {
-    display: block;
-    background-color: #2855a7;
     color: white;
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 5px;
+    background: #237189;
+    cursor: pointer;
+    box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
     transition: background-color 0.2s ease-in-out;
-    position: absolute; /* Keep it absolute */
-    bottom: 10px; /* Position it at the bottom */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Adjust horizontal centering */
-    width: calc(100% - 20px); /* Make the button width responsive to the container */
-    box-sizing: border-box; /* Ensure padding is included in the width */
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 20px);
+    box-sizing: border-box;
 }
 
 .card-button:hover {

@@ -1,12 +1,25 @@
 /* Form Styling */
+
+#dashboard1{
+    background-color: #ffffff;
+    color: rgb((97, 0, 0)55, 255, 255);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ecf0f3;
+    box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+    margin-bottom: 30px;
+}
+
 #bookingForm {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
-    background-color: #60606077;
     padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: #f7faf2;
+    box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+    border-radius: 10px;
 }
 
 #bookingForm label {
@@ -41,6 +54,29 @@
 #bookingForm button:hover {
     background-color: #004494;
 }
+
+.button-2 {
+    background-color: #ece2e2;
+    border-radius: 8px;
+    border-width: 0;
+    color: #333333;
+    cursor: pointer;
+    display: inline-block;
+    font-family:"Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 10px 12px;
+    text-align: center;
+    transition: all 200ms;
+    vertical-align: baseline;
+    white-space: nowrap;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
 
 /* Additional Info Section */
 #additionalInfo {

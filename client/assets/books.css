@@ -130,9 +130,9 @@ body {
     right: 2px; /* position at the right inside the button */
     color: #FFF; /* color of the text */
     font-size: smaller; /* smaller font size for the stock info */
-    padding: 3px; /* padding inside the stock info */
+    padding: 5px; /* padding inside the stock info */
 
-    margin-left: 4px; /* space from the 'Book Now' text */
+    margin-right: 10px; /* space from the 'Book Now' text */
 }
 
 .card-button:hover {

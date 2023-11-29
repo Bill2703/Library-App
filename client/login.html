@@ -10,33 +10,48 @@
     <title>Florin County Council Community Library Booking System</title>
   </head>
   <body>
-  <div class="container">
-  <div id="dashboard">
-    <div class="brand-logo"></div>
-    <p1>Hello, and welcome back</p1>
-    <p>Please enter your Username and password.</p>
-    <form id="login-form">
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" placeholder="username"/>
+    <div class="container">
+      <div id="dashboard">
+        <div class="brand-logo"></div>
+        <p1>Hello, and welcome back</p1>
+        <p>Please enter your Username and password.</p>
+        <p1>
+        <form id="login-form">
+          <label for="username">Username:</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="username"
+          />
+          <label for="password">Password:</label>
+          <div class="password-container">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="password"
+            />
+            <button
+              id="togglePassword"
+              type="button"
+              onclick="togglePasswordVisibility()"
+            >
+              Show
+            </button>
+          </div>
 
-      <label for="password">Password:</label>
-      <div class="password-container">
-        <input type="password" id="password" name="password" placeholder="password"/>
-        <button id="togglePassword" type="button" onclick="togglePasswordVisibility()">Show</button>
+          <button type="submit">Login</button>
+        </form>
+
+        <p>New to Florin County Council Library?</p>
+        <a href="./register.html" class="card-button">Sign up here</a>
+
+        <div class="footer">
+          &copy; 2023 Florin County Council Community Library Booking System.
+          All rights reserved.
+        </div>
       </div>
-
-      <button type="submit">Login</button>
-    </form>
-   
-    <p>New to Florin County Council Library?</p> <a href="./register.html" class="card-button">Sign up here</a>
-
-    <div class="footer">
-        &copy; 2023 Florin County Council Community Library Booking System. All
-        rights reserved.
-      </div>
-  </div>
-</div>
-
-   
+    </div>
   </body>
 </html>

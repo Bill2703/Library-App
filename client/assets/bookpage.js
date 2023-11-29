@@ -35,6 +35,7 @@ async function fetchAndDisplayBooks() {
 }
 
 // Function to create and append book elements to the DOM
+// Function to create and append book elements to the DOM
 function appendBookToDOM(book, bookList) {
     // Create list item for the book
     const bookItem = document.createElement('li');
@@ -45,15 +46,21 @@ function appendBookToDOM(book, bookList) {
     coverImage.src = book.coverimageurl;
     coverImage.alt = 'Book Cover';
 
+    // Create div container for book details and button
+    const bookDetailContainer = document.createElement('div');
+    bookDetailContainer.className = 'book-detail-container'; // Make sure to add CSS for this class
+
     // Create popup div for book details
     const bookPopup = document.createElement('div');
     bookPopup.className = 'book-popup';
 
-    // Add book title, author, and summary
+    // Add book title, author, and summary to the popup
     bookPopup.appendChild(createElementWithText('h3', book.title));
     bookPopup.appendChild(createElementWithText('p', 'Author: ' + book.author));
     bookPopup.appendChild(createElementWithText('p', 'Summary: ' + book.blurb));
-    bookPopup.appendChild(createElementWithText('p', 'Stock: ' + book.stock));
+
+    // Append book details to the detail container
+    bookDetailContainer.appendChild(bookPopup);
 
     // Create and setup 'Book Now' link
     const bookNowLink = document.createElement('a');
@@ -65,11 +72,12 @@ function appendBookToDOM(book, bookList) {
         localStorage.setItem('selectedBook', JSON.stringify(book));
     });
 
-    bookPopup.appendChild(bookNowLink);
+    // Append the 'Book Now' button to the detail container
+    bookDetailContainer.appendChild(bookNowLink);
 
-    // Append cover image and popup to book item
+    // Append cover image and detail container to the book item
     bookItem.appendChild(coverImage);
-    bookItem.appendChild(bookPopup);
+    bookItem.appendChild(bookDetailContainer);
 
     // Append the book item to the book list
     bookList.appendChild(bookItem);

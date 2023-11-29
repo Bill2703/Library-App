@@ -78,11 +78,12 @@ class Book{
 
     async updateStock({ title, stock }) {
         try {
+            console.log("hit1");
             const response = await db.query(
                 "UPDATE book SET stock=$1 WHERE title=$2 RETURNING *",
                 [stock, title]
             );
-    
+            
             const bookName = response.rows[0].title.toLowerCase();
             const updatedBook = await Book.getOneByBookName(bookName);
             return updatedBook;
@@ -112,6 +113,14 @@ class Book{
         }
     }
 
+    static async deleteRental(user_id, book_id) {
+        try {
+            await db.query("DELETE FROM book_rental WHERE user_id=$1 AND book_id=$2", [user_id, book_id]);
+        } catch (error) {
+            console.error('Error deleting rental:', error);
+            throw new Error('Failed to delete rental.');
+        }
+    }
 }
 
 module.exports = Book;

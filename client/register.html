@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="./assets/favicon.ico">
     <link rel="stylesheet" href="./assets/index.css">
     <link rel="stylesheet" href="./assets/default.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <script src="./assets/register.js" defer></script>
     <title>Register - Florin County Council Community Library Booking System</title>
 </head>
@@ -17,22 +18,32 @@
             <div class="brand-logo"></div>
             <form id="register-form">
            
-            <p1>
-                </p>
+                <label for="fullName">FullName:</label>
+                <input type="text" id="fullName" name="fullName" placeholder="FullName">
 
-                    <label for="fullName">FullName:</label>
-                    <input type="text" id="fullName" name="fullName" placeholder="FullName">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="example@test.com">
 
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="example@test.com">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="username">
 
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" placeholder="username">
-
+                <div class="pass-field">
                     <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" placeholder="password">
+                    <input type="password" id="password" name="password" placeholder="Create password">
+                    <i class="fa-solid fa-eye"></i>
+                </div>
+                <div class="content">
+                    <p>Password must contain</p>
+                    <ul class="requirement-list">
+                        <li><i class="fa-solid fa-circle"></i><span>At least 8 characters length</span></li>
+                        <li><i class="fa-solid fa-circle"></i><span>At least 1 number (0...9)</span></li>
+                        <li><i class="fa-solid fa-circle"></i><span>At least 1 lowercase letter (a...z)</span></li>
+                        <li><i class="fa-solid fa-circle"></i><span>At least 1 special symbol (!...$)</span></li>
+                        <li><i class="fa-solid fa-circle"></i><span>At least 1 uppercase letter (A...Z)</span></li>
+                    </ul>
+                </div>
              
-                    <button type="submit" value="Register" href="./login.html" class="card-button">Register</button>
+                <button type="submit" value="Register" href="./login.html" class="card-button">Register</button>
                 
             </form>
             <p>Already registered?</p>

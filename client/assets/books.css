@@ -62,6 +62,7 @@ body {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  width: 200px;
 }
 
 /* Book List Styles */

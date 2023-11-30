@@ -167,7 +167,23 @@ a.card-button:hover {
   color: #b6b4b4;
   font-weight: 300;
 }
-
+a{
+display: block;
+  width: 100%;
+  padding: 10px 0; /* Match your button padding */
+  height: 40px; /* Match your button height */
+  border-radius: 20px; 
+  background: #85a29f; /* Background color */
+  color: white; /* Text color */
+  text-align: center; 
+  margin-top: 15px;
+  cursor: pointer;
+  font-weight: 300;
+  box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
+  transition: 0.5s;
+  text-decoration: none;
+  font-size: small;
+}
 /* #password-requirements {
   display: none;
   /* Additional styling for the tooltip like background-color, padding, etc. */

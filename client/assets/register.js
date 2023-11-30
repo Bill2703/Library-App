@@ -18,6 +18,7 @@ async function handleRegistration(event) {
 
   // Validate the extracted user data
   if (!isValidFormData(userData)) {
+    alert("Please fill out all fields.");
     return; // Exit if the data is invalid
   }
 
@@ -32,7 +33,7 @@ async function handleRegistration(event) {
 }
 
 // Function to validate the user's input data
-function isValidFormData({email, password }) {
+function isValidFormData({ email, password }) {
   // Check if the password meets the criteria
   if (!validatePassword(password)) {
     alert("Your password does not meet the requirements.");
@@ -119,16 +120,12 @@ function validatePassword(password, fullName) {
   const hasNumber = /\d/.test(password);
   const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>+=~\\-]/.test(password);
   const isLongEnough = password.length > 8;
-  const doesNotIncludeName = !password
-    .toLowerCase()
-    .includes(fullName.toLowerCase());
 
   return (
     hasUpperCase &&
     hasNumber &&
     hasSpecialChar &&
-    isLongEnough &&
-    doesNotIncludeName
+    isLongEnough
   );
 }
 
@@ -177,7 +174,7 @@ function passwordStylePopup(popup) {
 // The revised form submission event listener
 document
   .getElementById("register-form")
-  .addEventListener("submit", function (event) {
+  .addEventListener("register", function (event) {
     event.preventDefault();
 
     const password = document.getElementById("password").value;

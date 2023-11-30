@@ -53,6 +53,25 @@ function appendBookToDOM(book, bookList) {
   const bookPopup = document.createElement("div");
   bookPopup.className = "book-popup";
 
+
+  // Create and setup 'Average Rating' span
+  const averageRating = calculateAverageRating(book);
+  const ratingSpan = document.createElement("span");
+  ratingSpan.className = "rating-info";
+
+  // Convert average rating to star rating
+  const starRating = convertToStarRating(averageRating);
+  const starContainer = document.createElement("div");
+  starContainer.className = "star-container";
+
+  // Create stars and append to starContainer
+  for (let i = 0; i < starRating; i++) {
+    const starElement = document.createElement("i");
+    starElement.className = "fa-solid fa-star";
+    starContainer.appendChild(starElement);
+  }
+
+
   // Add book title, author, and summary to the popup
   bookPopup.appendChild(createElementWithText("h3", book.title));
   bookPopup.appendChild(createElementWithText("p", "Author: " + book.author));
@@ -60,6 +79,8 @@ function appendBookToDOM(book, bookList) {
 
   // Append book details to the detail container
   bookDetailContainer.appendChild(bookPopup);
+  bookDetailContainer.appendChild(ratingSpan);
+  ratingSpan.appendChild(starContainer);
 
   // Create and setup 'Book Now' link
   const bookNowLink = document.createElement("a");
@@ -97,6 +118,31 @@ function appendBookToDOM(book, bookList) {
 
   // Append the book item to the book list
   bookList.appendChild(bookItem);
+}
+
+// Function to calculate average rating
+function calculateAverageRating(book) {
+  if (book.rating_count === 0) {
+    return "No ratings!";
+  }
+
+  const averageRating = book.total_rating / book.rating_count;
+  // Ensure averageRating is a number before returning
+  return Number.isNaN(averageRating) ? 0 : averageRating.toFixed(1);
+}
+
+// Function to convert average rating to star rating
+function convertToStarRating(averageRating) {
+  const numericRating = parseFloat(averageRating);
+
+  if (isNaN(numericRating)) {
+    // Return 0 stars for "No ratings!"
+    return 0;
+  }
+
+  // Convert average rating to a 5-star scale
+  const fiveStarRating = (numericRating / 5) * 5;
+  return Math.round(fiveStarRating);
 }
 
 // Helper function to create an HTML element with text content

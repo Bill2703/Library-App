@@ -47,9 +47,13 @@
 }
 
 .requirement-list li span {
-font-size: small; 
+font-size: small;
 }
 
 .requirement-list {
-  list-style-type: none; /* This removes the bullet points */
+  list-style-type: none; 
+}
+
+.pass-field .fa-eye{
+padding-top: 10px;
 }

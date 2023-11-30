@@ -185,12 +185,8 @@ display: block;
   text-decoration: none;
   font-size: small;
 }
-/* #password-requirements {
-  display: none;
-  /* Additional styling for the tooltip like background-color, padding, etc. */
- 
 
-/* #password:hover + #password-requirements {
-  display: block;
-} */
+.requirement-list li.valid span {
+  color: #999;
+}
 

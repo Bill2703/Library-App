@@ -69,6 +69,7 @@ function appendBookToDOM(book, bookList) {
 
   // Add text node for 'Book Now' after the stock span
   bookNowLink.appendChild(document.createTextNode(" Book Now"));
+  
   // Create and setup 'Stock' span to be included inside the 'Book Now' link
   const stockSpan = document.createElement("span");
   stockSpan.className = "stock-info";
@@ -111,6 +112,8 @@ function createElementWithText(tag, text) {
 const logout = document.getElementById("logout");
 logout.addEventListener("click", () => {
   localStorage.removeItem("token");
+  localStorage.removeItem("username")
+  localStorage.removeItem("user_id")
 });
 
 // Start fetching and displaying books on DOMContentLoaded

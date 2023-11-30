@@ -32,9 +32,9 @@ async function handleRegistration(event) {
 }
 
 // Function to validate the user's input data
-function isValidFormData({ fullName, email, password }) {
+function isValidFormData({email, password }) {
   // Check if the password meets the criteria
-  if (!validatePassword(password, fullName)) {
+  if (!validatePassword(password)) {
     alert("Your password does not meet the requirements.");
     return false;
   }

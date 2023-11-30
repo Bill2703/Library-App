@@ -11,7 +11,7 @@ function processSuccessfulLogin(token, user) {
 
     // Schedule a redirection to the menu page after a short delay
     setTimeout(() => {
-        window.location.assign("menu.html");
+        window.location.assign("bookpage.html");
     }, 3000);
 }
 

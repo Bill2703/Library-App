@@ -108,3 +108,18 @@ function togglePassword() {
 
 // Attach the event listener to the login form
 document.getElementById("login-form").addEventListener("submit", handleLoginFormSubmission);
+
+function togglePassword() {
+    var passwordInput = document.getElementById('password');
+    var eyeIcon = document.querySelector('.fa-eye');
+
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        eyeIcon.classList.remove('fa-eye');
+        eyeIcon.classList.add('fa-eye-slash');
+    } else {
+        passwordInput.type = 'password';
+        eyeIcon.classList.remove('fa-eye-slash');
+        eyeIcon.classList.add('fa-eye');
+    }
+}

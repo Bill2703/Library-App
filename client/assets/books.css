@@ -5,29 +5,30 @@ body {
     font-family: "Poppins", sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #ffffff;
+    background: #ecf0f3;
 }
 
 /* Dashboard Styles */
 #dashboard1{
-    background-color: #ffffff;
+    background-color: #f2eee7;
     color: rgb((97, 0, 0)55, 255, 255);
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #ecf0f3;
+    background: #f2eee7;
     box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
 }
 
 #dashboard p {
     font-size: 1.5em;
     margin: 0;
+    background: #ecf0f3;
 }
 
 #menu-button,
 #account-button {
-    background-color: #007bff;
+    background-color:#85a29f;
     color: white;
     padding: 10px 15px;
     text-decoration: none;
@@ -37,7 +38,7 @@ body {
 
 #menu-button:hover,
 #account-button:hover {
-    background-color: #0056b3;
+    background-color: #85a29f;
 }
 
 .button-2 {
@@ -111,7 +112,7 @@ body {
 
 .card-button {
     color: white;
-    background: #237189;
+    background: #9cbfbb;
     cursor: pointer;
     box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
     transition: background-color 0.2s ease-in-out;
@@ -130,13 +131,13 @@ body {
     right: 2px; /* position at the right inside the button */
     color: #FFF; /* color of the text */
     font-size: smaller; /* smaller font size for the stock info */
-    padding: 3px; /* padding inside the stock info */
+    padding: 5px; /* padding inside the stock info */
 
-    margin-left: 4px; /* space from the 'Book Now' text */
+    margin-right: 10px; /* space from the 'Book Now' text */
 }
 
 .card-button:hover {
-    background-color: #4251b5;
+    background-color: #0d3b44;
 }
 
 @media (max-width: 600px) {

@@ -1,13 +1,15 @@
 const db = require("../database/connect")
 
 class Book{
-    constructor({book_id, title, author, blurb, stock, coverimageurl}) {
+    constructor({book_id, title, author, blurb, stock, coverimageurl, total_rating, rating_count}) {
         this.id = book_id
         this.title = title
         this.author = author
         this.blurb = blurb
         this.stock = stock
         this.coverimageurl = coverimageurl
+        this.total_rating = total_rating
+        this.rating_count = rating_count
     }
     
 
@@ -78,7 +80,6 @@ class Book{
 
     async updateStock({ title, stock }) {
         try {
-            console.log("hit1");
             const response = await db.query(
                 "UPDATE book SET stock=$1 WHERE title=$2 RETURNING *",
                 [stock, title]
@@ -119,6 +120,15 @@ class Book{
         } catch (error) {
             console.error('Error deleting rental:', error);
             throw new Error('Failed to delete rental.');
+        }
+    }
+
+    static async updateRating(book_id, rating){
+        try{
+            await db.query("UPDATE book SET total_rating = total_rating + $1, rating_count = rating_count + 1 WHERE book_id = $2", [rating, book_id]);
+        }catch(err){
+            console.error('Error updating rating:', error);
+            throw new Error('Failed to update rating');
         }
     }
 }

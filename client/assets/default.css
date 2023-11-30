@@ -25,6 +25,7 @@ body {
   height: 100vh;
   padding: auto;
   overflow-y: auto;
+  
 }
 
 #dashboard {
@@ -36,7 +37,7 @@ body {
   border-radius: 10px;
   width: 350px;
   height: auto;
-  background: #f7faf2;
+  background: #f2eee7;
   box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
 }
 
@@ -45,10 +46,11 @@ body {
   background-size: contain;
   height: 100px;
   width: 100px;
-  margin: auto;
+  margin: 0 auto;
   border-radius: 50%;
   box-sizing: border-box;
   box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
+  
 }
 
 h1 {
@@ -64,20 +66,6 @@ p {
   font-size: small;
 }
 
-p1 {
-  font-weight: 700;
-  padding-top: 45px;
-  font-size: 20px;
-}
-
-.footer {
-  margin-top: auto;
-  padding: 10px;
-  text-align: center;
-  font-size: 10px;
-  color: #b6b4b4;
-  font-weight: 300;
-}
 
 .container1 {
   display: flex;
@@ -100,6 +88,7 @@ button {
   outline: none;
   box-sizing: border-box;
   font-weight: 300;
+  background: #f2eee7;
 }
 
 label {
@@ -121,7 +110,7 @@ input:focus {
 }
 
 input {
-  background: #ecf0f3;
+  background: #f2eee7;
   padding: 10px;
   padding-left: 20px;
   height: 50px;
@@ -133,39 +122,58 @@ input {
 button {
   color: white;
   margin-top: 15px;
-  background: #237189;
+  background: #85a29f;
   height: 40px;
   border-radius: 20px;
   cursor: pointer;
-  font-weight: 900;
+  font-weight: 300;
   box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
   transition: 0.5s;
   text-decoration: none;
-  font-weight: 300;
+
 }
 
 button:hover {
   box-shadow: none;
 }
 
-a {
-  color: white;
-  margin-top: 10%;
-  background: #237189;
-  height: 40px;
-  border-radius: 20px;
+a.card-button {
+  display: block;
+  width: 100%;
+  padding: 10px 0; /* Match your button padding */
+  height: 40px; /* Match your button height */
+  border-radius: 20px; 
+  background: #85a29f; /* Background color */
+  color: white; /* Text color */
+  text-align: center; 
+  margin-top: 15px;
   cursor: pointer;
   font-weight: 300;
   box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
   transition: 0.5s;
-  padding-inline: 15px;
-  padding-top: 5px;
   text-decoration: none;
   font-size: small;
-  font-family: "Poppins", sans-serif;
 }
 
-a:hover {
+a.card-button:hover {
   box-shadow: none;
 }
+
+.footer {
+  margin-top: auto;
+  padding: 10px;
+  text-align: center;
+  font-size: 10px;
+  color: #b6b4b4;
+  font-weight: 300;
+}
+
+/* #password-requirements {
+  display: none;
+  /* Additional styling for the tooltip like background-color, padding, etc. */
+ 
+
+/* #password:hover + #password-requirements {
+  display: block;
+} */
 

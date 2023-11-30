@@ -41,3 +41,15 @@
 .card:hover {
     transform: scale(1.03);
   }
+
+.requirement-list li i.fa-circle {
+  color: #f2eee7; 
+}
+
+.requirement-list li span {
+font-size: small; 
+}
+
+.requirement-list {
+  list-style-type: none; /* This removes the bullet points */
+}

@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="./assets/favicon.ico">
     <link rel="stylesheet" href="./assets/index.css">
     <link rel="stylesheet" href="./assets/default.css">
+    
     <script src="./assets/register.js" defer></script>
     <title>Register - Florin County Council Community Library Booking System</title>
 </head>
@@ -26,19 +27,16 @@
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username" placeholder="username">
 
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" placeholder="password">
-
-                    <button type="button" id="togglePassword">Show Password</button>
+                    <div class="pass-field">
+                        <input type="password" placeholder="Create password">
+                        <i class="fa-solid fa-eye"></i>
+                      </div>
              
                     <button type="submit" value="Register" href="./login.html" class="card-button">Register</button>
 
                      <div class="wrapper">
-      <div class="pass-field">
-        <input type="password" placeholder="Create password">
-        <i class="fa-solid fa-eye"></i>
-      </div>
-      <div class="content">
+                        
+                        <div class="content">
         <p>Password must contains</p>
         <ul class="requirement-list">
           <li>

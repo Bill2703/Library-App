@@ -27,10 +27,10 @@ async function fetchAndDisplayBooks() {
   // Iterate over each book in the data
   books.forEach((book) => {
     // Only display the book if its stock is greater than 0
-    if (book.stock > 0) {
+    //if (book.stock > 0) {
       // Create and append book elements to the book list
       appendBookToDOM(book, bookList);
-    }
+    //}
   });
 }
 
@@ -68,7 +68,12 @@ function appendBookToDOM(book, bookList) {
   bookNowLink.setAttribute("data-room", "book");
 
   // Add text node for 'Book Now' after the stock span
-  bookNowLink.appendChild(document.createTextNode(" Book Now"));
+  if(book.stock > 0){
+    bookNowLink.appendChild(document.createTextNode(" Book Now"));
+  } else {
+    bookNowLink.appendChild(document.createTextNode(" OUT OF STOCK!"));
+    bookNowLink.style.backgroundColor = 'red'
+  }
   
   // Create and setup 'Stock' span to be included inside the 'Book Now' link
   const stockSpan = document.createElement("span");

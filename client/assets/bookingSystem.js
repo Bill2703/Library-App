@@ -153,6 +153,9 @@ function sendBookingConfirmation(book, date, time) {
     }, 3000);
 
 }
+if(selectedBook.stock === 0){
+    bookNowLink.style.display = 'none'
+}
 
 function setupEventListeners() {
     bookNowLink.addEventListener('click', handleBookNowClick);

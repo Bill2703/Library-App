@@ -18,6 +18,7 @@ async function handleRegistration(event) {
 
   // Validate the extracted user data
   if (!isValidFormData(userData)) {
+    alert("Please fill out all fields.");
     return; // Exit if the data is invalid
   }
 
@@ -32,9 +33,9 @@ async function handleRegistration(event) {
 }
 
 // Function to validate the user's input data
-function isValidFormData({ fullName, email, password }) {
+function isValidFormData({ email, password }) {
   // Check if the password meets the criteria
-  if (!validatePassword(password, fullName)) {
+  if (!validatePassword(password)) {
     alert("Your password does not meet the requirements.");
     return false;
   }
@@ -119,16 +120,12 @@ function validatePassword(password, fullName) {
   const hasNumber = /\d/.test(password);
   const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>+=~\\-]/.test(password);
   const isLongEnough = password.length > 8;
-  const doesNotIncludeName = !password
-    .toLowerCase()
-    .includes(fullName.toLowerCase());
 
   return (
     hasUpperCase &&
     hasNumber &&
     hasSpecialChar &&
-    isLongEnough &&
-    doesNotIncludeName
+    isLongEnough
   );
 }
 
@@ -177,7 +174,7 @@ function passwordStylePopup(popup) {
 // The revised form submission event listener
 document
   .getElementById("register-form")
-  .addEventListener("submit", function (event) {
+  .addEventListener("register", function (event) {
     event.preventDefault();
 
     const password = document.getElementById("password").value;
@@ -191,8 +188,8 @@ document
   const passwordInput = document.querySelector(".pass-field input");
   const eyeIcon = document.querySelector(".pass-field i");
   const requirementList = document.querySelectorAll(".requirement-list li");
-  
-  // An array of password requirements with corresponding 
+
+  // An array of password requirements with corresponding
   // regular expressions and index of the requirement list item
   const requirements = [
       { regex: /.{8,}/, index: 0 }, // Minimum of 8 characters
@@ -201,13 +198,13 @@ document
       { regex: /[^A-Za-z0-9]/, index: 3 }, // At least one special character
       { regex: /[A-Z]/, index: 4 }, // At least one uppercase letter
   ]
-  
+
   passwordInput.addEventListener("keyup", (e) => {
       requirements.forEach(item => {
           // Check if the password matches the requirement regex
           const isValid = item.regex.test(e.target.value);
           const requirementItem = requirementList[item.index];
-  
+
           // Updating class and icon of requirement item if requirement matched or not
           if (isValid) {
               requirementItem.classList.add("valid");
@@ -218,13 +215,13 @@ document
           }
       });
   });
-  
+
   eyeIcon.addEventListener("click", () => {
       // Toggle the password input type between "password" and "text"
       passwordInput.type = passwordInput.type === "password" ? "text" : "password";
-  
+
       // Update the eye icon class based on the password input type
       eyeIcon.className = `fa-solid fa-eye${passwordInput.type === "password" ? "" : "-slash"}`;
   });
-  
-  
+
+

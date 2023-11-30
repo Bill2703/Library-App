@@ -185,10 +185,6 @@ display: block;
   text-decoration: none;
   font-size: small;
 }
-
-.requirement-list li.valid span {
-  color: #999;
-}
 /* #password-requirements {
   display: none;
   /* Additional styling for the tooltip like background-color, padding, etc. */

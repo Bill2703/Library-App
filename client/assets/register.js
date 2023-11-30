@@ -115,7 +115,7 @@ function validateEmail(email) {
 }
 
 // Function to validate the strength and criteria of the password
-function validatePassword(password, fullName) {
+function validatePassword(password) {
   const hasUpperCase = /[A-Z]/.test(password);
   const hasNumber = /\d/.test(password);
   const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>+=~\\-]/.test(password);
@@ -127,48 +127,6 @@ function validatePassword(password, fullName) {
     hasSpecialChar &&
     isLongEnough
   );
-}
-
-function showPasswordCriteriaPopup() {
-  // Remove existing popup if present
-  const existingPopup = document.getElementById("password-criteria-popup");
-  if (existingPopup) {
-    existingPopup.remove();
-  }
-
-  // Create new popup
-  const popup = document.createElement("div");
-  popup.id = "password-criteria-popup";
-  passwordStylePopup(popup);
-  popup.innerHTML = `
-    <ul>
-    Your password must meet the following criteria:<br />
-        At least one uppercase letter: <br />
-         A-Z<br />
-        At least one number: <br />
-         0-9<br />
-        At least one special character: <br  />
-        !@#$%^&*(),.?":{}|<>+=~- <br />
-        At least 8 characters long<br />
-        Must not include your full name <br />
-    </ul>
-`;
-  document.body.appendChild(popup);
-  setTimeout(() => popup.remove(), 3000);
-}
-
-function passwordStylePopup(popup) {
-  popup.style.position = "absolute";
-  popup.style.left = "50%";
-  popup.style.top = "50%";
-  popup.style.width = "400px";
-  popup.style.transform = "translate(-50%, -50%)";
-  popup.style.padding = "5px";
-  popup.style.backgroundColor = "rgb(255, 102, 102)";
-  popup.style.border = "3px solid red";
-  popup.style.borderRadius = "8px";
-  popup.style.zIndex = "1000";
-  popup.style.textAlign = "center";
 }
 
 // The revised form submission event listener
@@ -191,20 +149,20 @@ document
 
 
   const requirements = [
-      { regex: /.{8,}/, index: 0 }, 
-      { regex: /[0-9]/, index: 1 }, 
-      { regex: /[a-z]/, index: 2 }, 
+      { regex: /.{8,}/, index: 0 },
+      { regex: /[0-9]/, index: 1 },
+      { regex: /[a-z]/, index: 2 },
       { regex: /[^A-Za-z0-9]/, index: 3 },
-      { regex: /[A-Z]/, index: 4 }, 
+      { regex: /[A-Z]/, index: 4 },
   ]
 
   passwordInput.addEventListener("keyup", (e) => {
       requirements.forEach(item => {
-          
+
           const isValid = item.regex.test(e.target.value);
           const requirementItem = requirementList[item.index];
 
-        
+
           if (isValid) {
               requirementItem.classList.add("valid");
               requirementItem.firstElementChild.className = "fa-solid fa-check";
@@ -222,5 +180,3 @@ document
       // Update the eye icon class based on the password input type
       eyeIcon.className = `fa-solid fa-eye${passwordInput.type === "password" ? "" : "-slash"}`;
   });
-
-

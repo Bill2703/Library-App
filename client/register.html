@@ -15,13 +15,10 @@
     <div class="container">
         <div id="dashboard">
             <div class="brand-logo"></div>
+            <form id="register-form">
             <p1>
-                </p>
-                <form id="register-form">
-
-                    <label for="fullName">FullName:</label>
+                 <label for="fullName">FullName:</label>
                     <input type="text" id="fullName" name="fullName" placeholder="FullName">
-
 
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" placeholder="example@test.com">
@@ -34,10 +31,44 @@
 
                     <button type="button" id="togglePassword">Show Password</button>
              
-                <input type="submit" value="Register" href="./login.html" class="card-button">
+                    <button type="submit" value="Register" href="./login.html" class="card-button">Register</button>
+
+                     <div class="wrapper">
+      <div class="pass-field">
+        <input type="password" placeholder="Create password">
+        <i class="fa-solid fa-eye"></i>
+      </div>
+      <div class="content">
+        <p>Password must contains</p>
+        <ul class="requirement-list">
+          <li>
+            <i class="fa-solid fa-circle"></i>
+            <span>At least 8 characters length</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-circle"></i>
+            <span>At least 1 number (0...9)</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-circle"></i>
+            <span>At least 1 lowercase letter (a...z)</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-circle"></i>
+            <span>At least 1 special symbol (!...$)</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-circle"></i>
+            <span>At least 1 uppercase letter (A...Z)</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
             </form>
             <p>Already registered?</p>
-            <a href="./login.html">Log in here</a>
+            <a href="./login.html" class="card-button">Login here</a>
+
             <div class="footer">
                 &copy; 2023 Florin County Council Community Library Booking System. All
                 rights reserved.

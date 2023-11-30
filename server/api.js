@@ -5,7 +5,6 @@ const logger = require("./middleware/logger")
 const bookRouter = require("./routers/books");
 const userRouter = require("./routers/user")
 
-
 const api = express();
 
 api.use(express.json());

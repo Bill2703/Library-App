@@ -56,4 +56,5 @@ font-size: small;
 
 .pass-field .fa-eye{
 padding-top: 10px;
+cursor: pointer;
 }

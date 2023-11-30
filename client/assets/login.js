@@ -91,15 +91,20 @@ async function handleLoginFormSubmission(event) {
     }
 }
 
-document.getElementById('togglePassword').addEventListener('click', function (e) {
-    // Toggle the type attribute using getAttribute() and setAttribute()
-    const passwordInput = document.getElementById('password');
-    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-    passwordInput.setAttribute('type', type);
-
-    // Toggle the button text
-    this.textContent = type === 'password' ? 'Show Password' : 'Hide Password';
-});
+function togglePassword() {
+    var passwordInput = document.getElementById('password');
+    var toggleIcon = document.querySelector('.fa-eye');
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      toggleIcon.classList.remove('fa-eye');
+      toggleIcon.classList.add('fa-eye-slash');
+    } else {
+      passwordInput.type = 'password';
+      toggleIcon.classList.remove('fa-eye-slash');
+      toggleIcon.classList.add('fa-eye');
+    }
+  }
+  
 
 // Attach the event listener to the login form
 document.getElementById("login-form").addEventListener("submit", handleLoginFormSubmission);

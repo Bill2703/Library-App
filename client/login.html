@@ -25,20 +25,17 @@
             name="username"
             placeholder="username"
           />
-          <label for="password">Password:</label>
-          <div class="password-container">
+          <div class="pass-feild">
+            <label for="username">Password:</label>
             <input
               type="password"
               id="password"
               name="password"
               placeholder="password"
             />
-            <button
-              id="togglePassword"
-              type="button"
-              onclick="togglePasswordVisibility()"
-            ></button>
+            <i class="fa-solid fa-eye" onclick="togglePassword()"></i>
           </div>
+          
 
           <button type="submit">Login</button>
         </form>

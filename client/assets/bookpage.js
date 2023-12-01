@@ -8,7 +8,7 @@ async function fetchAndDisplayBooks() {
   };
 
   // Fetch book data from the server
-  const response = await fetch("http://localhost:3000/books", options);
+  const response = await fetch("https://library-app-xm9c.onrender.com/books", options);
 
   // Redirect to login page if the response status is not 200
   if (response.status !== 200) {

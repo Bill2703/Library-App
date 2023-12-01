@@ -4,18 +4,22 @@ const User = require('../models/User');
 const Token = require("../models/Token")
 
 async function register (req, res) {
-    const data = req.body;
-    //CREATING HASH FOR PASSWORDS
-    console.log(data);
+    try{
+        const data = req.body;
+        //CREATING HASH FOR PASSWORDS
+        console.log(data);
+        
+        const salt = await bcrypt.genSalt(parseInt(process.env.BCRYPT_SALT_ROUNDS));
+        data["password"]= await bcrypt.hash(data.password, salt);
     
-    const salt = await bcrypt.genSalt(parseInt(process.env.BCRYPT_SALT_ROUNDS));
-    data["password"]= await bcrypt.hash(data.password, salt);
-
-    console.log(data);
-
-    const result = await User.create(data);
-    console.log(result);
-    res.status(201).send(data);
+        console.log(data);
+    
+        const result = await User.create(data);
+        console.log(result);
+        res.status(201).send(data);
+    }catch(err){
+        res.status(401).json({error: err.message})
+    }
 };
 
 async function login (req, res) {

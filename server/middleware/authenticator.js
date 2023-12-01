@@ -1,4 +1,4 @@
-const Token = require("../models/token")
+const Token = require("../models/Token")
 
 //next is what allows us to move on to the next piece of middleware or part of the code
 

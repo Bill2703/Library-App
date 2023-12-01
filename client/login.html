@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="./assets/favicon.ico" />
-    <link rel="stylesheet" href="./assets/index.css" />
+    <link rel="shortcut icon" href="./assets/favicon-16x16.png">
     <link rel="stylesheet" href="./assets/default.css" />
+    <link rel="stylesheet" href="./assets/index.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <script src="./assets/login.js" defer></script>
     <title>Florin County Council Community Library Booking System</title>
   </head>
@@ -24,22 +25,17 @@
             name="username"
             placeholder="username"
           />
-          <label for="password">Password:</label>
-          <div class="password-container">
+          <div class="pass-field">
+            <label for="username">Password:</label>
             <input
               type="password"
               id="password"
               name="password"
               placeholder="password"
             />
-            <button
-              id="togglePassword"
-              type="button"
-              onclick="togglePasswordVisibility()"
-            >
-              Show
-            </button>
+            <i class="fa-solid fa-eye" onclick="togglePassword()"></i>
           </div>
+          
 
           <button type="submit">Login</button>
         </form>

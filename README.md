@@ -34,9 +34,7 @@ The Florin County Council Community Library Booking System is a sophisticated we
 - Install all necessary dependencies including Express, PostgreSQL client (pg), and others:
 
     ```bash
-    bashCopy code
-    npm install nodemon pg dotenv express cors
-
+    npm install
     ```
 
 - The command above installs all dependencies listed in your **`package.json`** file.
@@ -55,6 +53,7 @@ The Florin County Council Community Library Booking System is a sophisticated we
 
   PORT=3000
   DB_URL=YOUR_ELEPHANTSQL_URL
+  DCRYPT_SALT_ROUNDS=10
 
   ```
 

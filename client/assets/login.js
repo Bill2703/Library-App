@@ -11,7 +11,7 @@ function processSuccessfulLogin(token, user) {
 
     // Schedule a redirection to the menu page after a short delay
     setTimeout(() => {
-        window.location.assign("menu.html");
+        window.location.assign("bookpage.html");
     }, 3000);
 }
 
@@ -91,15 +91,35 @@ async function handleLoginFormSubmission(event) {
     }
 }
 
-document.getElementById('togglePassword').addEventListener('click', function (e) {
-    // Toggle the type attribute using getAttribute() and setAttribute()
-    const passwordInput = document.getElementById('password');
-    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-    passwordInput.setAttribute('type', type);
-
-    // Toggle the button text
-    this.textContent = type === 'password' ? 'Show Password' : 'Hide Password';
-});
+function togglePassword() {
+    var passwordInput = document.getElementById('password');
+    var toggleIcon = document.querySelector('.fa-eye');
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      toggleIcon.classList.remove('fa-eye');
+      toggleIcon.classList.add('fa-eye-slash');
+    } else {
+      passwordInput.type = 'password';
+      toggleIcon.classList.remove('fa-eye-slash');
+      toggleIcon.classList.add('fa-eye');
+    }
+  }
+  
 
 // Attach the event listener to the login form
 document.getElementById("login-form").addEventListener("submit", handleLoginFormSubmission);
+
+function togglePassword() {
+    var passwordInput = document.getElementById('password');
+    var eyeIcon = document.querySelector('.fa-eye');
+
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        eyeIcon.classList.remove('fa-eye');
+        eyeIcon.classList.add('fa-eye-slash');
+    } else {
+        passwordInput.type = 'password';
+        eyeIcon.classList.remove('fa-eye-slash');
+        eyeIcon.classList.add('fa-eye');
+    }
+}

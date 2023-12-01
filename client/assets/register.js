@@ -18,6 +18,7 @@ async function handleRegistration(event) {
 
   // Validate the extracted user data
   if (!isValidFormData(userData)) {
+    alert("Please fill out all fields.");
     return; // Exit if the data is invalid
   }
 
@@ -32,9 +33,9 @@ async function handleRegistration(event) {
 }
 
 // Function to validate the user's input data
-function isValidFormData({ fullName, email, password }) {
+function isValidFormData({ email, password }) {
   // Check if the password meets the criteria
-  if (!validatePassword(password, fullName)) {
+  if (!validatePassword(password)) {
     alert("Your password does not meet the requirements.");
     return false;
   }
@@ -114,70 +115,24 @@ function validateEmail(email) {
 }
 
 // Function to validate the strength and criteria of the password
-function validatePassword(password, fullName) {
+function validatePassword(password) {
   const hasUpperCase = /[A-Z]/.test(password);
   const hasNumber = /\d/.test(password);
   const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>+=~\\-]/.test(password);
   const isLongEnough = password.length > 8;
-  const doesNotIncludeName = !password
-    .toLowerCase()
-    .includes(fullName.toLowerCase());
 
   return (
     hasUpperCase &&
     hasNumber &&
     hasSpecialChar &&
-    isLongEnough &&
-    doesNotIncludeName
+    isLongEnough
   );
-}
-
-function showPasswordCriteriaPopup() {
-  // Remove existing popup if present
-  const existingPopup = document.getElementById("password-criteria-popup");
-  if (existingPopup) {
-    existingPopup.remove();
-  }
-
-  // Create new popup
-  const popup = document.createElement("div");
-  popup.id = "password-criteria-popup";
-  passwordStylePopup(popup);
-  popup.innerHTML = `
-    <ul>
-    Your password must meet the following criteria:<br />
-        At least one uppercase letter: <br />
-         A-Z<br />
-        At least one number: <br />
-         0-9<br />
-        At least one special character: <br  />
-        !@#$%^&*(),.?":{}|<>+=~- <br />
-        At least 8 characters long<br />
-        Must not include your full name <br />
-    </ul>
-`;
-  document.body.appendChild(popup);
-  setTimeout(() => popup.remove(), 3000);
-}
-
-function passwordStylePopup(popup) {
-  popup.style.position = "absolute";
-  popup.style.left = "50%";
-  popup.style.top = "50%";
-  popup.style.width = "400px";
-  popup.style.transform = "translate(-50%, -50%)";
-  popup.style.padding = "5px";
-  popup.style.backgroundColor = "rgb(255, 102, 102)";
-  popup.style.border = "3px solid red";
-  popup.style.borderRadius = "8px";
-  popup.style.zIndex = "1000";
-  popup.style.textAlign = "center";
 }
 
 // The revised form submission event listener
 document
   .getElementById("register-form")
-  .addEventListener("submit", function (event) {
+  .addEventListener("register", function (event) {
     event.preventDefault();
 
     const password = document.getElementById("password").value;
@@ -188,16 +143,40 @@ document
       handleRegistration(event);
     }
   });
+  const passwordInput = document.querySelector(".pass-field input");
+  const eyeIcon = document.querySelector(".pass-field i");
+  const requirementList = document.querySelectorAll(".requirement-list li");
 
-document
-  .getElementById("togglePassword")
-  .addEventListener("click", function (e) {
-    // Toggle the type attribute using getAttribute() and setAttribute()
-    const passwordInput = document.getElementById("password");
-    const type =
-      passwordInput.getAttribute("type") === "password" ? "text" : "password";
-    passwordInput.setAttribute("type", type);
 
-    // Toggle the button text
-    this.textContent = type === "password" ? "Show Password" : "Hide Password";
+  const requirements = [
+      { regex: /.{8,}/, index: 0 },
+      { regex: /[0-9]/, index: 1 },
+      { regex: /[a-z]/, index: 2 },
+      { regex: /[^A-Za-z0-9]/, index: 3 },
+      { regex: /[A-Z]/, index: 4 },
+  ]
+
+  passwordInput.addEventListener("keyup", (e) => {
+      requirements.forEach(item => {
+
+          const isValid = item.regex.test(e.target.value);
+          const requirementItem = requirementList[item.index];
+
+
+          if (isValid) {
+              requirementItem.classList.add("valid");
+              requirementItem.firstElementChild.className = "fa-solid fa-check";
+          } else {
+              requirementItem.classList.remove("valid");
+              requirementItem.firstElementChild.className = "fa-solid fa-circle";
+          }
+      });
+  });
+
+  eyeIcon.addEventListener("click", () => {
+      // Toggle the password input type between "password" and "text"
+      passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+
+      // Update the eye icon class based on the password input type
+      eyeIcon.className = `fa-solid fa-eye${passwordInput.type === "password" ? "" : "-slash"}`;
   });

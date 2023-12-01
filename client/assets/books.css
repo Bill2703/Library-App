@@ -2,156 +2,164 @@
 
 /* General Styles */
 body {
-    font-family: "Poppins", sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #ecf0f3;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #ecf0f3;
 }
 
 /* Dashboard Styles */
-#dashboard1{
-    background-color: #f2eee7;
-    color: rgb((97, 0, 0)55, 255, 255);
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #f2eee7;
-    box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+#dashboard1 {
+  background-color: #f2eee7;
+  color: rgb((97, 0, 0) 55, 255, 255);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f2eee7;
+  box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
 }
 
 #dashboard p {
-    font-size: 1.5em;
-    margin: 0;
-    background: #ecf0f3;
+  font-size: 1.5em;
+  margin: 0;
+  background: #ecf0f3;
 }
 
 #menu-button,
 #account-button {
-    background-color:#85a29f;
-    color: white;
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.2s ease-in-out;
+  background-color: #85a29f;
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.2s ease-in-out;
 }
 
 #menu-button:hover,
 #account-button:hover {
-    background-color: #85a29f;
+  background-color: #85a29f;
 }
 
 .button-2 {
-    background-color: #ece2e2;
-    border-radius: 8px;
-    border-width: 0;
-    color: #333333;
-    cursor: pointer;
-    display: inline-block;
-    font-family:"Poppins", sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 20px;
-    list-style: none;
-    margin: 0;
-    padding: 10px 12px;
-    text-align: center;
-    transition: all 200ms;
-    vertical-align: baseline;
-    white-space: nowrap;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-  }
+  background-color: #ece2e2;
+  border-radius: 8px;
+  border-width: 0;
+  color: #333333;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 10px 12px;
+  text-align: center;
+  transition: all 200ms;
+  vertical-align: baseline;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100px;
+}
 
 /* Book List Styles */
 #book-list {
-    list-style-type: none;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    margin: 0;
+  list-style-type: none;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin: 0;
 }
 
 .book-item {
-    background-color: white;
-    border-radius: 10px;
-    position: relative;
-    padding-bottom: 50px; 
-    background: #ecf0f3;
-    box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+  background-color: white;
+  border-radius: 10px;
+  position: relative;
+  padding-bottom: 50px;
+  background: #ecf0f3;
+  box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
 }
 
 .book-item:hover {
-    background-color: beige;
+  background-color: beige;
 }
 
 .book-item img {
-    width: 100%;
-    height: 55%;
-    display: block;
-    border-radius: 10px;
+  width: 100%;
+  height: 55%;
+  display: block;
+  border-radius: 10px;
 }
 
 .book-popup {
-    padding: 15px;
-    text-align: center;
+  padding: 15px;
+  text-align: center;
 }
 
 .book-popup h3 {
-    margin: 0 0 10px 0;
-    font-size: 1.2em;
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
 }
 
 .book-popup p {
-    margin: 0 0 10px 0;
-    color: #555;
-    position: relative;
+  margin: 0 0 10px 0;
+  color: #555;
+  position: relative;
 }
 
 .card-button {
-    color: white;
-    background: #9cbfbb;
-    cursor: pointer;
-    box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
-    transition: background-color 0.2s ease-in-out;
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 20px);
-    box-sizing: border-box;
-    display: inline-block;
+  color: white;
+  background: #9cbfbb;
+  cursor: pointer;
+  box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
+  transition: background-color 0.2s ease-in-out;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 20px);
+  box-sizing: border-box;
+  display: inline-block;
 }
 
 .stock-info {
-    position: absolute;
-    bottom: 2px; /* position at the bottom inside the button */
-    right: 2px; /* position at the right inside the button */
-    color: #FFF; /* color of the text */
-    font-size: smaller; /* smaller font size for the stock info */
-    padding: 5px; /* padding inside the stock info */
-
-    margin-right: 10px; /* space from the 'Book Now' text */
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  color: #fff;
+  font-size: smaller;
+  padding: 5px;
+  margin-right: 10px;
 }
 
 .card-button:hover {
-    background-color: #0d3b44;
+  background-color: #0d3b44;
 }
 
 @media (max-width: 600px) {
-    #dashboard {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  #dashboard {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-    #menu-button,
-    #account-button {
-        margin-top: 10px;
-    }
+  #menu-button,
+  #account-button {
+    margin-top: 10px;
+  }
 
-    #book-list {
-        grid-template-columns: 1fr;
-    }
+  #book-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.requirement-list li.valid span {
+  color: #999;
+}
+
+.star-container i {
+  color: #ff9c1a;
 }

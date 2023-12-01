@@ -76,7 +76,7 @@ async function handleLoginFormSubmission(event) {
 
     // Perform the login API call
     try {
-        const response = await fetch("https://library-app-xm9c.onrender.com/users/login", requestOptions);
+        const response = await fetch("http://localhost:3000/users/login", requestOptions);
         const data = await response.json();
         // Handle the API response
         if (response.status === 200) {

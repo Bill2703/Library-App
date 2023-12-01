@@ -64,7 +64,7 @@ async function makeRegistrationRequest({
     },
     body: JSON.stringify({ fullName, email, username, password }),
   };
-  return await fetch("https://library-app-xm9c.onrender.com/users/register", requestOptions);
+  return await fetch("http://localhost:3000/users/register", requestOptions);
 }
 
 // Function to handle the server's response after the registration attempt

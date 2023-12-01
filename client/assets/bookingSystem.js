@@ -41,7 +41,7 @@ async function updateRating(book) {
 
     // Update the rating on the server
     try {
-        const response = await fetch(`https://library-app-xm9c.onrender.com/rating/${title}`, {
+        const response = await fetch(`http://localhost:3000/books/rating/${title}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ async function updateStock(book) {
     const username = localStorage.getItem("username")
     const book_id = book.id;
     try {
-        const response = await fetch(`https://library-app-xm9c.onrender.com/books/stock/${title}`, {
+        const response = await fetch(`http://localhost:3000/books/stock/${title}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -94,7 +94,7 @@ async function returnBook(book) {
     const user_id = localStorage.getItem("user_id");
     const { title, stock } = book;
     try {
-        const response = await fetch(`https://library-app-xm9c.onrender.com/books/return/${title}`, {
+        const response = await fetch(`http://localhost:3000/books/return/${title}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
